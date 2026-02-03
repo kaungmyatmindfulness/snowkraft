@@ -1,0 +1,3502 @@
+[
+  {
+    "id": 901,
+    "questionText": "In Snowflake's multi-cluster shared data architecture, which layer is responsible for query compilation, optimization, and metadata management?",
+    "questionType": "single",
+    "explanation": "The cloud services layer in Snowflake handles critical functions including authentication, infrastructure management, metadata management, query parsing and optimization, and access control. This layer runs on compute instances provisioned by Snowflake and coordinates activities across the platform without being tied to any specific virtual warehouse.",
+    "domain": "1",
+    "topic": "Cloud Services Layer",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Database storage layer",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4486
+      },
+      {
+        "answerText": "Compute layer (virtual warehouses)",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4487
+      },
+      {
+        "answerText": "Cloud services layer",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4488
+      },
+      {
+        "answerText": "Data sharing layer",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4489
+      }
+    ]
+  },
+  {
+    "id": 902,
+    "questionText": "Snowflake's architecture is described as a hybrid of which two traditional database architectures?",
+    "questionType": "single",
+    "explanation": "Snowflake combines a shared-disk architecture (centralized data repository accessible from all compute nodes) with a shared-nothing architecture (MPP compute clusters where each node stores data locally). This hybrid approach provides the data management simplicity of shared-disk with the performance and scale-out benefits of shared-nothing.",
+    "domain": "1",
+    "topic": "Cloud Architecture",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Shared-disk and shared-nothing",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4490
+      },
+      {
+        "answerText": "Master-slave and peer-to-peer",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4491
+      },
+      {
+        "answerText": "Columnar and row-based",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4492
+      },
+      {
+        "answerText": "OLTP and OLAP",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4493
+      }
+    ]
+  },
+  {
+    "id": 903,
+    "questionText": "When a multi-cluster warehouse is configured with MAX_CLUSTER_COUNT = 5 and MIN_CLUSTER_COUNT = 5, which mode is it operating in?",
+    "questionType": "single",
+    "explanation": "When the maximum and minimum cluster counts are set to the same value (greater than 1), the warehouse operates in Maximized mode. In this mode, all specified clusters start immediately when the warehouse is activated, providing static control over available compute resources for consistent high-concurrency workloads.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Auto-scale mode with Standard scaling policy",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4494
+      },
+      {
+        "answerText": "Maximized mode",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4495
+      },
+      {
+        "answerText": "Economy mode",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4496
+      },
+      {
+        "answerText": "Single-cluster mode",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4497
+      }
+    ]
+  },
+  {
+    "id": 904,
+    "questionText": "Which statement accurately describes the relationship between virtual warehouses in Snowflake?",
+    "questionType": "single",
+    "explanation": "Each virtual warehouse in Snowflake is an independent compute cluster that does not share compute resources with other virtual warehouses. This isolation means that the performance of one warehouse has no effect on the performance of other warehouses, enabling workload isolation and predictable performance for concurrent users.",
+    "domain": "1",
+    "topic": "Compute Layer",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Virtual warehouses share compute resources to maximize efficiency",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4498
+      },
+      {
+        "answerText": "Each virtual warehouse is an independent cluster that does not share compute resources with others",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4499
+      },
+      {
+        "answerText": "Virtual warehouses share storage but not metadata",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4500
+      },
+      {
+        "answerText": "Virtual warehouses can only access data in their assigned database",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4501
+      }
+    ]
+  },
+  {
+    "id": 905,
+    "questionText": "A company needs to handle unpredictable query workloads that vary significantly throughout the day. They want to minimize costs while accepting some query queueing during peak times. Which multi-cluster warehouse scaling policy should they use?",
+    "questionType": "single",
+    "explanation": "The Economy scaling policy conserves credits by favoring keeping running clusters fully loaded rather than starting additional clusters. It only starts a new cluster if the system estimates enough query load to keep it busy for at least 6 minutes. An idle or lightly loaded cluster is marked for shutdown when Snowflake estimates it has less than 6 minutes of work remaining, and is shut down after finishing any running queries. This approach may result in query queueing but reduces overall compute costs.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Standard scaling policy",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4502
+      },
+      {
+        "answerText": "Economy scaling policy",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4503
+      },
+      {
+        "answerText": "Maximized mode",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4504
+      },
+      {
+        "answerText": "Legacy scaling policy",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4505
+      }
+    ]
+  },
+  {
+    "id": 906,
+    "questionText": "Which component of Snowflake's architecture is responsible for storing data in its internal optimized columnar format using micro-partitions?",
+    "questionType": "single",
+    "explanation": "The database storage layer in Snowflake stores all data in a compressed, columnar format organized into micro-partitions. This layer handles data persistence, automatic compression, and organization of data for optimal query performance. The storage is centralized and accessible from all compute nodes in the platform.",
+    "domain": "1",
+    "topic": "Storage Layer",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Cloud services layer",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4506
+      },
+      {
+        "answerText": "Virtual warehouse compute nodes",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4507
+      },
+      {
+        "answerText": "Database storage layer",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4508
+      },
+      {
+        "answerText": "Query result cache",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4509
+      }
+    ]
+  },
+  {
+    "id": 907,
+    "questionText": "In Snowflake, cloud services compute consumption is billed only under which condition?",
+    "questionType": "single",
+    "explanation": "While the cloud services layer consumes credits for background tasks like authentication, metadata management, and access control, this usage is only charged if the daily consumption exceeds 10% of the total daily warehouse compute usage. This ensures customers are not billed for routine operational overhead when their warehouse usage is substantial.",
+    "domain": "1",
+    "topic": "Cloud Services Layer",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "When any query is executed",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4510
+      },
+      {
+        "answerText": "When daily cloud services usage exceeds 10% of daily warehouse compute usage",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4511
+      },
+      {
+        "answerText": "When metadata operations exceed 1000 per hour",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4512
+      },
+      {
+        "answerText": "Cloud services compute is always billed separately",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4513
+      }
+    ]
+  },
+  {
+    "id": 908,
+    "questionText": "Which of the following services is NOT managed by Snowflake's cloud services layer?",
+    "questionType": "single",
+    "explanation": "The cloud services layer manages security, authentication, metadata, query parsing and optimization, and infrastructure management. However, actual query execution and data processing are performed by virtual warehouses in the compute layer. The cloud services layer coordinates and optimizes queries, but the physical execution happens on warehouse compute nodes.",
+    "domain": "1",
+    "topic": "Cloud Services Layer",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Authentication and access control",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4514
+      },
+      {
+        "answerText": "Query parsing and optimization",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4515
+      },
+      {
+        "answerText": "Metadata management",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4516
+      },
+      {
+        "answerText": "Query execution and data scanning",
+        "isCorrect": true,
+        "sortOrder": 3,
+        "id": 4517
+      }
+    ]
+  },
+  {
+    "id": 909,
+    "questionText": "What is the primary benefit of Snowflake's separation of storage and compute layers?",
+    "questionType": "single",
+    "explanation": "By separating storage and compute, Snowflake allows organizations to scale each layer independently based on their specific needs. You can increase warehouse size for complex queries without adding storage, or expand storage capacity without provisioning additional compute. This eliminates the tight coupling found in traditional data warehouses and provides cost-effective scaling.",
+    "domain": "1",
+    "topic": "Cloud Architecture",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Faster query execution through local data caching",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4518
+      },
+      {
+        "answerText": "Independent scaling of storage and compute resources",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4519
+      },
+      {
+        "answerText": "Reduced network latency between components",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4520
+      },
+      {
+        "answerText": "Simplified backup and recovery procedures",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4521
+      }
+    ]
+  },
+  {
+    "id": 910,
+    "questionText": "A data engineering team has a multi-cluster warehouse in Auto-scale mode with the Standard scaling policy. The warehouse currently has 3 clusters running. According to the Standard scaling policy, when will Snowflake start a fourth cluster?",
+    "questionType": "single",
+    "explanation": "With the Standard scaling policy, Snowflake favors starting additional clusters over conserving credits to prevent query queuing. A new cluster is started immediately when a query is queued, or when Snowflake estimates that currently running clusters do not have enough resources to handle additional queries. This ensures optimal responsiveness and throughput.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "When the average cluster utilization exceeds 80% for 5 minutes",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4522
+      },
+      {
+        "answerText": "When a query is queued or Snowflake estimates current clusters cannot handle additional queries",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4523
+      },
+      {
+        "answerText": "When there is enough estimated load to keep the new cluster busy for 6 minutes",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4524
+      },
+      {
+        "answerText": "When an administrator manually triggers scale-out",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4525
+      }
+    ]
+  },
+  {
+    "id": 911,
+    "questionText": "A data engineer notices that query performance is slower after their warehouse has been idle for an extended period. What is the MOST likely explanation for this behavior?",
+    "questionType": "single",
+    "explanation": "Snowflake warehouses maintain a local data cache (also known as warehouse cache or SSD cache) that stores recently accessed data. When a warehouse is suspended due to inactivity via AUTO_SUSPEND, this cache is cleared. When the warehouse resumes, queries must re-read data from the remote cloud storage layer, resulting in slower initial query performance until the cache is rebuilt. This is why Snowflake recommends setting AUTO_SUSPEND to at least 10 minutes for query warehouses to preserve cache effectiveness.",
+    "domain": "1",
+    "topic": "Warehouse Cache",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The warehouse automatically downsized during the idle period",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4526
+      },
+      {
+        "answerText": "The warehouse cache was cleared when the warehouse was suspended",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4527
+      },
+      {
+        "answerText": "The query result cache expired after 24 hours",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4528
+      },
+      {
+        "answerText": "The Cloud Services layer throttled the warehouse resources",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4529
+      }
+    ]
+  },
+  {
+    "id": 912,
+    "questionText": "Which scaling policy for a multi-cluster warehouse prioritizes minimizing query queuing over conserving credits?",
+    "questionType": "single",
+    "explanation": "The STANDARD scaling policy (which is the default) prioritizes performance by starting additional clusters as soon as queries begin to queue, thereby minimizing wait times. In contrast, the ECONOMY scaling policy conserves credits by keeping existing clusters fully loaded before starting new ones, which may result in some query queuing. Multi-cluster warehouses require Enterprise edition or higher.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "ECONOMY",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4530
+      },
+      {
+        "answerText": "STANDARD",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4531
+      },
+      {
+        "answerText": "PERFORMANCE",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4532
+      },
+      {
+        "answerText": "MAXIMIZED",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4533
+      }
+    ]
+  },
+  {
+    "id": 913,
+    "questionText": "A company runs an identical query twice within a few minutes using the same warehouse. The second execution completes almost instantly with no compute charges. Which caching mechanism is responsible for this behavior?",
+    "questionType": "single",
+    "explanation": "The query result cache (also known as persisted query results) stores the results of queries in the Cloud Services layer for 24 hours. When an identical query is submitted, Snowflake can return the cached results instantly without using any warehouse compute resources, resulting in no compute charges. For SELECT queries, any role with the necessary access privileges on the underlying tables can reuse cached results (the role does not need to match). For SHOW queries, the executing role must match the role that generated the cached results. The warehouse cache stores raw data locally but still requires compute to process it, while the metadata cache stores table statistics rather than query results.",
+    "domain": "1",
+    "topic": "Query Result Cache",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Warehouse data cache (SSD cache)",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4534
+      },
+      {
+        "answerText": "Query result cache (persisted query results)",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4535
+      },
+      {
+        "answerText": "Metadata cache",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4536
+      },
+      {
+        "answerText": "Micro-partition cache",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4537
+      }
+    ]
+  },
+  {
+    "id": 914,
+    "questionText": "What is the relationship between warehouse size and maximum number of clusters allowed in a multi-cluster warehouse?",
+    "questionType": "single",
+    "explanation": "In Snowflake, larger warehouse sizes have lower maximum cluster counts. For example, X-Small through Medium warehouses support up to 300 clusters, Large supports up to 160, X-Large up to 80, and 4X-Large through 6X-Large support up to 10 clusters. This inverse relationship exists because larger warehouses already have significantly more compute resources per cluster. The total compute capacity is the warehouse size multiplied by the number of clusters. Note: Prior to February 2025, all warehouse sizes had a maximum of 10 clusters.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Larger warehouse sizes allow more clusters",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4538
+      },
+      {
+        "answerText": "Larger warehouse sizes allow fewer maximum clusters",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4539
+      },
+      {
+        "answerText": "All warehouse sizes allow the same maximum number of clusters",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4540
+      },
+      {
+        "answerText": "Larger warehouse sizes require a minimum of 2 clusters",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4541
+      }
+    ]
+  },
+  {
+    "id": 915,
+    "questionText": "A data engineer sets AUTO_SUSPEND = 0 on a warehouse. What happens when queries finish executing?",
+    "questionType": "single",
+    "explanation": "When AUTO_SUSPEND is set to 0 (or NULL), the warehouse will never automatically suspend and will continue running (and consuming credits) indefinitely until manually suspended. This is typically not recommended for most workloads as it leads to unnecessary credit consumption during idle periods. The default AUTO_SUSPEND value is 600 seconds (10 minutes). Setting AUTO_SUSPEND to 0 does not disable the warehouse or cause immediate suspension.",
+    "domain": "1",
+    "topic": "Auto-suspend/Resume",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The warehouse suspends immediately",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4542
+      },
+      {
+        "answerText": "The warehouse never auto-suspends and runs indefinitely",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4543
+      },
+      {
+        "answerText": "The warehouse uses the default 10-minute auto-suspend",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4544
+      },
+      {
+        "answerText": "The warehouse is disabled and cannot process queries",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4545
+      }
+    ]
+  },
+  {
+    "id": 916,
+    "questionText": "Which operation would INVALIDATE the query result cache for a table, causing subsequent identical queries to be re-executed?",
+    "questionType": "single",
+    "explanation": "The query result cache is invalidated when the underlying data changes, such as when DML operations (INSERT, UPDATE, DELETE, MERGE) modify the table. Time Travel queries and changing the session timezone can also affect result cache validity. However, simply resizing the warehouse or suspending/resuming it does not invalidate the query result cache, as the cache is stored in the Cloud Services layer, not the warehouse.",
+    "domain": "1",
+    "topic": "Query Result Cache",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Resizing the warehouse from Medium to Large",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4546
+      },
+      {
+        "answerText": "Suspending and resuming the warehouse",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4547
+      },
+      {
+        "answerText": "Executing an INSERT statement on the table",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4548
+      },
+      {
+        "answerText": "Running the same query from a different user with the same role",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4549
+      }
+    ]
+  },
+  {
+    "id": 917,
+    "questionText": "A Medium-size multi-cluster warehouse with 3 clusters running in Maximized mode operates for 2 hours. How many credits are consumed?",
+    "questionType": "single",
+    "explanation": "In Maximized mode, all clusters run concurrently for the entire duration. A Medium warehouse consumes 4 credits per hour. With 3 clusters, the total consumption is 4 credits x 3 clusters x 2 hours = 24 credits. In Maximized mode, all specified clusters start when the warehouse is started and remain running until the warehouse is suspended, regardless of query load.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "8 credits",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4550
+      },
+      {
+        "answerText": "12 credits",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4551
+      },
+      {
+        "answerText": "24 credits",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4552
+      },
+      {
+        "answerText": "48 credits",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4553
+      }
+    ]
+  },
+  {
+    "id": 918,
+    "questionText": "Which statement accurately describes when AUTO_RESUME triggers a warehouse to start?",
+    "questionType": "single",
+    "explanation": "When AUTO_RESUME is set to TRUE (which is the default), a suspended warehouse automatically resumes when a query is submitted that requires compute resources from that warehouse. This happens transparently to the user, though there may be a brief delay while the warehouse starts up. AUTO_RESUME does not trigger based on scheduled times or when users log in; it responds specifically to queries that need warehouse resources.",
+    "domain": "1",
+    "topic": "Auto-suspend/Resume",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "When a user logs into Snowflake",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4554
+      },
+      {
+        "answerText": "When a query requiring the warehouse is submitted",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4555
+      },
+      {
+        "answerText": "At a scheduled time each day",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4556
+      },
+      {
+        "answerText": "When the Cloud Services layer is idle",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4557
+      }
+    ]
+  },
+  {
+    "id": 919,
+    "questionText": "A company wants to optimize their warehouse configuration for a BI reporting workload that runs queries every 5-10 minutes throughout the business day. Which AUTO_SUSPEND setting is MOST appropriate?",
+    "questionType": "single",
+    "explanation": "For BI workloads with regular query patterns, Snowflake recommends setting AUTO_SUSPEND to at least 10 minutes (600 seconds) to preserve the warehouse cache. Since queries run every 5-10 minutes, a 10-minute auto-suspend ensures the warehouse stays warm between queries, maximizing cache hits. Setting it too low (like 60 seconds) would cause frequent suspensions and cache clearing, while very long timeouts waste credits during true idle periods.",
+    "domain": "1",
+    "topic": "Warehouse Cache",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "AUTO_SUSPEND = 60 (1 minute)",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4558
+      },
+      {
+        "answerText": "AUTO_SUSPEND = 600 (10 minutes)",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4559
+      },
+      {
+        "answerText": "AUTO_SUSPEND = 0 (never suspend)",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4560
+      },
+      {
+        "answerText": "AUTO_SUSPEND = 3600 (1 hour)",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4561
+      }
+    ]
+  },
+  {
+    "id": 920,
+    "questionText": "In a multi-cluster warehouse using Auto-scale mode with ECONOMY scaling policy, when does Snowflake start an additional cluster?",
+    "questionType": "single",
+    "explanation": "The ECONOMY scaling policy conserves credits by only starting additional clusters when the system estimates that query load cannot be adequately handled by the currently running clusters for at least 6 minutes. This is more conservative than the STANDARD policy, which starts new clusters as soon as queries begin queueing. Economy mode may result in longer queue times but uses fewer credits overall.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Immediately when any query enters the queue",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4562
+      },
+      {
+        "answerText": "When the load is estimated to require additional resources for at least 6 minutes",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4563
+      },
+      {
+        "answerText": "When CPU utilization exceeds 80%",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4564
+      },
+      {
+        "answerText": "Only when manually triggered by an administrator",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4565
+      }
+    ]
+  },
+  {
+    "id": 921,
+    "questionText": "A company needs to store Protected Health Information (PHI) in Snowflake and must comply with HIPAA regulations. Which is the MINIMUM Snowflake edition that supports PHI data storage?",
+    "questionType": "single",
+    "explanation": "Business Critical Edition is specifically designed for organizations with extremely sensitive data, including PHI that must comply with HIPAA and HITRUST CSF regulations. While Standard and Enterprise editions provide robust security features, only Business Critical and VPS editions include the enhanced security certifications and data protection features required for PHI data. Before storing PHI, organizations must also execute a Business Associate Agreement (BAA) with Snowflake.",
+    "domain": "1",
+    "topic": "Snowflake Editions",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Standard Edition",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4566
+      },
+      {
+        "answerText": "Enterprise Edition",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4567
+      },
+      {
+        "answerText": "Business Critical Edition",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4568
+      },
+      {
+        "answerText": "Virtual Private Snowflake (VPS)",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4569
+      }
+    ]
+  },
+  {
+    "id": 922,
+    "questionText": "Which feature distinguishes Virtual Private Snowflake (VPS) from Business Critical Edition?",
+    "questionType": "single",
+    "explanation": "Virtual Private Snowflake (VPS) provides a completely separate Snowflake environment that is isolated from all other Snowflake accounts. VPS accounts do not share any type of hardware resources with accounts outside the VPS. This complete isolation is the key differentiator from Business Critical Edition, which shares the multi-tenant infrastructure with other Snowflake accounts while still providing enhanced security features.",
+    "domain": "1",
+    "topic": "Snowflake Editions",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Support for Tri-Secret Secure encryption",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4570
+      },
+      {
+        "answerText": "Completely isolated environment with no shared hardware resources",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4571
+      },
+      {
+        "answerText": "Extended Time Travel up to 90 days",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4572
+      },
+      {
+        "answerText": "Support for private connectivity via PrivateLink",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4573
+      }
+    ]
+  },
+  {
+    "id": 923,
+    "questionText": "A data provider wants to share data with a consumer whose Snowflake account is in a different region. Using direct shares, what is required to accomplish this?",
+    "questionType": "single",
+    "explanation": "Direct shares in Snowflake work only within the same region. When a provider wants to share data with a consumer in a different region, they must use database replication to replicate the shared data to an account in the consumer's region, then create a share from that replicated database. Alternatively, providers can use listings with Cross-Cloud Auto-fulfillment, which automates this replication process.",
+    "domain": "1",
+    "topic": "Data Sharing Architecture",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Enable cross-region sharing in the share configuration",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4574
+      },
+      {
+        "answerText": "Replicate the database to the consumer's region and share from there",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4575
+      },
+      {
+        "answerText": "Upgrade both accounts to Business Critical Edition",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4576
+      },
+      {
+        "answerText": "Create a reader account in the consumer's region",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4577
+      }
+    ]
+  },
+  {
+    "id": 924,
+    "questionText": "Which statement accurately describes how Secure Data Sharing works in Snowflake?",
+    "questionType": "single",
+    "explanation": "Snowflake's Secure Data Sharing uses the services layer and metadata store to enable sharing without any physical data copying or transfer between accounts. Shared data does not take up storage in the consumer account and does not contribute to their storage charges. Consumers only pay for the compute resources (virtual warehouses) used to query the shared data. This architecture enables near-instantaneous access to shared data.",
+    "domain": "1",
+    "topic": "Data Sharing Architecture",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Data is copied to the consumer's account at scheduled intervals",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4578
+      },
+      {
+        "answerText": "No actual data is copied; sharing uses metadata and the services layer",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4579
+      },
+      {
+        "answerText": "Data is compressed and transferred through a secure ETL pipeline",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4580
+      },
+      {
+        "answerText": "Consumers must provision storage for the shared data in their account",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4581
+      }
+    ]
+  },
+  {
+    "id": 925,
+    "questionText": "A company on Enterprise Edition has a multi-cluster warehouse configured with MAX_CLUSTER_COUNT = 5 and SCALING_POLICY = 'ECONOMY'. What triggers the addition of a new cluster?",
+    "questionType": "single",
+    "explanation": "With the ECONOMY scaling policy, Snowflake adds a new cluster only when the system estimates there is enough query load to keep the new cluster busy for at least 6 minutes. This is more conservative than the STANDARD scaling policy, which starts a new cluster as soon as a query begins to queue. The ECONOMY policy prioritizes credit conservation over immediate performance, making it suitable for workloads where occasional queuing delays are acceptable.",
+    "domain": "1",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "A new cluster starts immediately when any single query is queued",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4582
+      },
+      {
+        "answerText": "A new cluster starts only when the system estimates enough load to keep it busy for at least 6 minutes",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4583
+      },
+      {
+        "answerText": "A new cluster starts when warehouse utilization exceeds 80% for 5 consecutive minutes",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4584
+      },
+      {
+        "answerText": "A new cluster starts when the number of queued queries exceeds the MAX_CLUSTER_COUNT value",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4585
+      }
+    ]
+  },
+  {
+    "id": 926,
+    "questionText": "A Snowflake account is hosted on AWS. Which statement is TRUE regarding data loading capabilities?",
+    "questionType": "single",
+    "explanation": "Snowflake supports loading data from files staged in Amazon S3, Google Cloud Storage, and Microsoft Azure blob storage regardless of the cloud platform where your Snowflake account is hosted. This cross-cloud data loading capability provides flexibility in data architecture, allowing organizations to load data from any major cloud provider's storage even if their Snowflake account runs on a different cloud platform.",
+    "domain": "1",
+    "topic": "Cloud Providers",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Data can only be loaded from Amazon S3 buckets",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4586
+      },
+      {
+        "answerText": "Data can be loaded from S3, Azure Blob Storage, and Google Cloud Storage",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4587
+      },
+      {
+        "answerText": "Data loading from Azure requires Business Critical Edition",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4588
+      },
+      {
+        "answerText": "Cross-cloud data loading requires enabling a special account feature",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4589
+      }
+    ]
+  },
+  {
+    "id": 927,
+    "questionText": "What is a key limitation of reader accounts in Snowflake's data sharing architecture?",
+    "questionType": "single",
+    "explanation": "Reader accounts (formerly known as read-only accounts) are created and managed by a data provider account to share data with consumers who do not have their own Snowflake accounts. A fundamental limitation is that a reader account can only consume data from the single provider account that created it. Reader accounts can create their own databases, schemas, tables, and views for storing query results, but they cannot share data with other accounts. The compute resources (virtual warehouses) used by reader accounts are billed to the provider account that created them.",
+    "domain": "1",
+    "topic": "Data Sharing Architecture",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Reader accounts cannot execute queries larger than 1 TB",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4590
+      },
+      {
+        "answerText": "Reader accounts can only consume data from the provider account that created them",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4591
+      },
+      {
+        "answerText": "Reader accounts are limited to Standard Edition features only",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4592
+      },
+      {
+        "answerText": "Reader accounts must be in the same cloud region as the provider",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4593
+      }
+    ]
+  },
+  {
+    "id": 928,
+    "questionText": "A Snowflake administrator needs to view billing and usage information, manage resource monitors, and set up database replication. Which system-defined role has the necessary privileges for all of these tasks?",
+    "questionType": "single",
+    "explanation": "ACCOUNTADMIN is the only system-defined role that can view billing and usage information, manage resource monitors at the account level, and configure database replication. These are account-level administrative tasks that are not available to SYSADMIN or SECURITYADMIN individually. ACCOUNTADMIN encapsulates both SYSADMIN and SECURITYADMIN, inheriting their privileges while also having exclusive account-level capabilities. Snowflake recommends limiting the number of users with this role and always using MFA for ACCOUNTADMIN users.",
+    "domain": "2",
+    "topic": "System-Defined Roles",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "ORGADMIN",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4594
+      },
+      {
+        "answerText": "ACCOUNTADMIN",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4595
+      },
+      {
+        "answerText": "SYSADMIN",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4596
+      },
+      {
+        "answerText": "SECURITYADMIN",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4597
+      }
+    ]
+  },
+  {
+    "id": 929,
+    "questionText": "A security administrator needs to grant privileges on objects in the account. Which global privilege is granted to the SECURITYADMIN role that enables this capability?",
+    "questionType": "single",
+    "explanation": "The SECURITYADMIN role is granted the MANAGE GRANTS global privilege, which enables it to grant and revoke any privilege on any object in the account. However, it is important to note that MANAGE GRANTS only provides the ability to manage privileges - it does not grant the ability to create objects. To create an object, SECURITYADMIN must also be granted the specific CREATE privilege for that object type.",
+    "domain": "2",
+    "topic": "Privileges",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "CREATE ROLE",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4598
+      },
+      {
+        "answerText": "OWNERSHIP",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4599
+      },
+      {
+        "answerText": "MANAGE GRANTS",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4600
+      },
+      {
+        "answerText": "EXECUTE GRANTS",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4601
+      }
+    ]
+  },
+  {
+    "id": 930,
+    "questionText": "Which system-defined role directly inherits the privileges of the USERADMIN role in Snowflake's default role hierarchy?",
+    "questionType": "single",
+    "explanation": "In Snowflake's default system role hierarchy, USERADMIN is granted directly to SECURITYADMIN, meaning SECURITYADMIN directly inherits all USERADMIN privileges. This allows SECURITYADMIN to perform all user and role management tasks that USERADMIN can perform, in addition to its own MANAGE GRANTS privilege. While ACCOUNTADMIN also inherits USERADMIN privileges, it does so indirectly through SECURITYADMIN, not directly.",
+    "domain": "2",
+    "topic": "Role Hierarchy",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "SYSADMIN",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4602
+      },
+      {
+        "answerText": "ACCOUNTADMIN",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4603
+      },
+      {
+        "answerText": "SECURITYADMIN",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4604
+      },
+      {
+        "answerText": "PUBLIC",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4605
+      }
+    ]
+  },
+  {
+    "id": 931,
+    "questionText": "A user creates a custom role called DATA_ANALYST and does NOT grant it to SYSADMIN. What is a consequence of this configuration?",
+    "questionType": "single",
+    "explanation": "When a custom role is not assigned to SYSADMIN through the role hierarchy, system administrators cannot manage objects owned by that role. Only roles with the MANAGE GRANTS privilege (SECURITYADMIN by default) can view and modify access grants on those objects. This is why Snowflake recommends creating a role hierarchy where custom roles ultimately roll up to SYSADMIN.",
+    "domain": "2",
+    "topic": "Role Hierarchy",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "SYSADMIN will automatically inherit all privileges from DATA_ANALYST",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4606
+      },
+      {
+        "answerText": "The DATA_ANALYST role will be deleted after 30 days",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4607
+      },
+      {
+        "answerText": "SYSADMIN cannot manage objects owned by the DATA_ANALYST role",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4608
+      },
+      {
+        "answerText": "The DATA_ANALYST role cannot own any objects",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4609
+      }
+    ]
+  },
+  {
+    "id": 932,
+    "questionText": "Which two security privileges are granted to the USERADMIN role by default? (Choose two.)",
+    "questionType": "multi",
+    "explanation": "The USERADMIN role is specifically designed for user and role management. By default, it is granted the CREATE USER and CREATE ROLE privileges. This role can create users and roles in the account and manage the users and roles it owns. However, to modify a user or role that USERADMIN does not own, a higher-level role with OWNERSHIP on that object is required.",
+    "domain": "2",
+    "topic": "System-Defined Roles",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "CREATE USER",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4610
+      },
+      {
+        "answerText": "CREATE ROLE",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4611
+      },
+      {
+        "answerText": "MANAGE GRANTS",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4612
+      },
+      {
+        "answerText": "CREATE WAREHOUSE",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4613
+      }
+    ]
+  },
+  {
+    "id": 933,
+    "questionText": "What is a characteristic of the PUBLIC role in Snowflake?",
+    "questionType": "single",
+    "explanation": "The PUBLIC role is a pseudo-role that is automatically granted to every user and every other role in a Snowflake account. This means any object owned by the PUBLIC role or any privilege granted to PUBLIC is effectively available to all users in the account. PUBLIC can own securable objects, but those objects become available to everyone by definition.",
+    "domain": "2",
+    "topic": "System-Defined Roles",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "It must be explicitly granted to each user",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4614
+      },
+      {
+        "answerText": "It is automatically granted to every user and every role",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4615
+      },
+      {
+        "answerText": "It cannot own any securable objects",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4616
+      },
+      {
+        "answerText": "It has the MANAGE GRANTS privilege by default",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4617
+      }
+    ]
+  },
+  {
+    "id": 934,
+    "questionText": "Role A has been granted to Role B, and Role B has been granted to Role C. If Role A has SELECT privilege on TABLE1, which statement is TRUE about privilege inheritance?",
+    "questionType": "single",
+    "explanation": "In Snowflake's role hierarchy, when a role is granted to another role, the parent role inherits all privileges of the child role. Since Role A (with SELECT on TABLE1) is granted to Role B, and Role B is granted to Role C, both Role B and Role C inherit the SELECT privilege on TABLE1. This is how privilege inheritance flows upward through the role hierarchy.",
+    "domain": "2",
+    "topic": "Privilege Inheritance",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Only Role B inherits the SELECT privilege on TABLE1",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4618
+      },
+      {
+        "answerText": "Both Role B and Role C inherit the SELECT privilege on TABLE1",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4619
+      },
+      {
+        "answerText": "Neither Role B nor Role C inherits the SELECT privilege",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4620
+      },
+      {
+        "answerText": "Only Role C inherits the SELECT privilege on TABLE1",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4621
+      }
+    ]
+  },
+  {
+    "id": 935,
+    "questionText": "A role has OWNERSHIP privilege on another role. Does the owner role automatically inherit the privileges of the owned role?",
+    "questionType": "single",
+    "explanation": "A role owner (the role that has OWNERSHIP privilege on another role) does NOT inherit the privileges of the owned role. Privilege inheritance is only possible within a role hierarchy - that is, when one role is explicitly granted to another using GRANT ROLE. Ownership and role hierarchy are separate concepts in Snowflake's access control model.",
+    "domain": "2",
+    "topic": "Privilege Inheritance",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Yes, the owner role automatically inherits all privileges of the owned role",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4622
+      },
+      {
+        "answerText": "Yes, but only global privileges are inherited",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4623
+      },
+      {
+        "answerText": "No, privilege inheritance only occurs within a role hierarchy via GRANT ROLE",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4624
+      },
+      {
+        "answerText": "No, but the owner can use the USE ROLE command to assume the owned role",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4625
+      }
+    ]
+  },
+  {
+    "id": 936,
+    "questionText": "Which role can create custom roles by default without needing additional privileges?",
+    "questionType": "single",
+    "explanation": "Custom account roles can be created using the USERADMIN role or any higher role (SECURITYADMIN, ACCOUNTADMIN) because USERADMIN has the CREATE ROLE privilege by default. Additionally, any role that has been granted the CREATE ROLE privilege can also create custom roles. SYSADMIN, by default, does not have CREATE ROLE privilege as its focus is on managing warehouses and databases.",
+    "domain": "2",
+    "topic": "RBAC",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "SYSADMIN",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4626
+      },
+      {
+        "answerText": "USERADMIN",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4627
+      },
+      {
+        "answerText": "PUBLIC",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4628
+      },
+      {
+        "answerText": "Any role can create custom roles by default",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4629
+      }
+    ]
+  },
+  {
+    "id": 937,
+    "questionText": "In a managed access schema, who can grant privileges on objects within that schema?",
+    "questionType": "single",
+    "explanation": "In managed access schemas, object owners lose the ability to make grant decisions on their objects. Only the schema owner (the role with OWNERSHIP privilege on the schema) or a role with the MANAGE GRANTS privilege can grant privileges on objects in the schema. This centralizes privilege management and provides tighter control over access compared to regular schemas where object owners can freely grant privileges.",
+    "domain": "2",
+    "topic": "RBAC",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Only the object owner can grant privileges",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4630
+      },
+      {
+        "answerText": "Any user with SELECT privilege on the object",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4631
+      },
+      {
+        "answerText": "The schema owner or a role with MANAGE GRANTS privilege",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4632
+      },
+      {
+        "answerText": "Only ACCOUNTADMIN can grant privileges in managed schemas",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4633
+      }
+    ]
+  },
+  {
+    "id": 938,
+    "questionText": "Which authentication method must service users use instead of password-based authentication with MFA in Snowflake?",
+    "questionType": "single",
+    "explanation": "MFA is intended for human users who authenticate with a password. Service users (used for automated processes and integrations) must use another form of authentication such as key pair authentication. Key pair authentication uses RSA public-private key pairs and is recommended for programmatic access where MFA prompts would interrupt automation workflows.",
+    "domain": "2",
+    "topic": "Authentication Methods",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4634,
+        "answerText": "Key pair authentication",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4635,
+        "answerText": "Password with stronger complexity requirements",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4636,
+        "answerText": "Biometric authentication",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4637,
+        "answerText": "SMS-based one-time passwords",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 939,
+    "questionText": "In Snowflake's network policy architecture, what happens when the same IP address appears in both the ALLOWED_NETWORK_RULE_LIST and BLOCKED_NETWORK_RULE_LIST?",
+    "questionType": "single",
+    "explanation": "When a network policy has the same IP address values in both the allowed and blocked lists, Snowflake applies the blocked list first. This means the IP address will be denied access. This behavior ensures that explicit denials take precedence over allow rules, following the security principle of fail-safe defaults.",
+    "domain": "2",
+    "topic": "Network Policies",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "id": 4638,
+        "answerText": "The blocked list takes precedence and access is denied",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4639,
+        "answerText": "The allowed list takes precedence and access is granted",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4640,
+        "answerText": "Snowflake returns an error due to conflicting rules",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4641,
+        "answerText": "The policy with the most recent modification timestamp applies",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 940,
+    "questionText": "What encryption standard does Snowflake use by default to encrypt all customer data at rest?",
+    "questionType": "single",
+    "explanation": "All Snowflake customer data is encrypted by default using strong AES (Advanced Encryption Standard) 256-bit encryption with a hierarchical key model rooted in a hardware security module (HSM). This encryption is automatic and requires no configuration or management from customers. The hierarchical key model includes root keys, account master keys, table master keys, and file keys.",
+    "domain": "2",
+    "topic": "Encryption",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4642,
+        "answerText": "AES 256-bit encryption",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4643,
+        "answerText": "AES 128-bit encryption",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4644,
+        "answerText": "RSA 2048-bit encryption",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4645,
+        "answerText": "Triple DES encryption",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 941,
+    "questionText": "A security administrator wants to configure federated authentication for Snowflake using their company's existing identity provider. Which protocol must the identity provider support to integrate with Snowflake?",
+    "questionType": "single",
+    "explanation": "Snowflake supports SAML 2.0 (Security Assertion Markup Language) compliant vendors as identity providers for federated authentication and single sign-on (SSO). While Okta and Microsoft AD FS provide native Snowflake support, most SAML 2.0-compliant vendors including PingFederate, OneLogin, and custom implementations can be configured as identity providers.",
+    "domain": "2",
+    "topic": "SSO/SAML",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4646,
+        "answerText": "SAML 2.0",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4647,
+        "answerText": "LDAP only",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4648,
+        "answerText": "Kerberos",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4649,
+        "answerText": "RADIUS",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 942,
+    "questionText": "Which MFA methods can be controlled through an authentication policy's MFA_POLICY parameter in Snowflake?",
+    "questionType": "single",
+    "explanation": "Snowflake authentication policies allow administrators to control which MFA methods can be used as a second factor through the ALLOWED_METHODS parameter within MFA_POLICY. The available MFA methods include passkeys (hardware security keys), TOTP (time-based one-time passcode from authenticator apps), and Duo. Administrators can restrict users to specific methods based on security requirements.",
+    "domain": "2",
+    "topic": "MFA",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "id": 4650,
+        "answerText": "Passkeys, TOTP (authenticator apps), and Duo",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4651,
+        "answerText": "SMS codes, email codes, and security questions",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4652,
+        "answerText": "Biometrics, smart cards, and USB tokens",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4653,
+        "answerText": "Voice recognition, PIN codes, and certificates",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 943,
+    "questionText": "What is Tri-Secret Secure in Snowflake, and what unique capability does it provide?",
+    "questionType": "single",
+    "explanation": "Tri-Secret Secure is Snowflake's dual-key encryption model that combines a Snowflake-maintained key with a customer-managed key (CMK) maintained in the cloud provider's key management service (AWS KMS, Azure Key Vault, or Google Cloud KMS). This provides customers complete control over their master key, allowing them to revoke access to their data at any time by disabling their CMK.",
+    "domain": "2",
+    "topic": "Encryption",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "id": 4654,
+        "answerText": "A dual-key encryption model combining Snowflake's key with a customer-managed key for complete data control",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4655,
+        "answerText": "Triple encryption using three different algorithms for maximum security",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4656,
+        "answerText": "Three-factor authentication requiring password, MFA, and certificate",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4657,
+        "answerText": "A secret sharing protocol that splits data across three cloud regions",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 944,
+    "questionText": "When configuring key pair authentication for Snowflake, what is the minimum RSA key size required?",
+    "questionType": "single",
+    "explanation": "Snowflake's key pair authentication requires a minimum of a 2048-bit RSA key pair. The private key can be encrypted or unencrypted and must be stored in PKCS#8 format. Snowflake recommends using encrypted private keys and communicating with internal security teams about whether to use encrypted or unencrypted keys based on organizational requirements.",
+    "domain": "2",
+    "topic": "Key Pair Authentication",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4658,
+        "answerText": "2048-bit",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4659,
+        "answerText": "1024-bit",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4660,
+        "answerText": "512-bit",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4661,
+        "answerText": "4096-bit",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 945,
+    "questionText": "In Snowflake's network policy precedence, what is the order of priority when network policies are applied at multiple levels?",
+    "questionType": "single",
+    "explanation": "Snowflake applies network policies with the most specific policy taking precedence. The order from highest to lowest priority is: user-level network policy, then security integration network policy, and finally account-level network policy. This allows administrators to set broad account-level restrictions while making exceptions for specific users or integrations.",
+    "domain": "2",
+    "topic": "Network Policies",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "id": 4662,
+        "answerText": "User > Security Integration > Account",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4663,
+        "answerText": "Account > Security Integration > User",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4664,
+        "answerText": "Security Integration > User > Account",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4665,
+        "answerText": "All policies are evaluated equally and merged together",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 946,
+    "questionText": "What type of Snowflake object is a Dynamic Data Masking policy, and where must it be created?",
+    "questionType": "single",
+    "explanation": "In Snowflake, masking policies are schema-level objects. This means a database and schema must exist before a masking policy can be created. Once created, the masking policy can be applied to columns in tables and views within the same or different schemas, depending on granted privileges. The masking policy is evaluated at query runtime.",
+    "domain": "2",
+    "topic": "Data Masking",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4666,
+        "answerText": "Schema-level object requiring database and schema to exist first",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4667,
+        "answerText": "Account-level object that can be used across all databases",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4668,
+        "answerText": "Table-level object created directly on each table",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4669,
+        "answerText": "Database-level object shared across all schemas",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 947,
+    "questionText": "How many active RSA public keys can be associated with a single Snowflake user for key pair authentication rotation?",
+    "questionType": "single",
+    "explanation": "Snowflake supports up to 2 active public keys per user through the RSA_PUBLIC_KEY and RSA_PUBLIC_KEY_2 user properties. This allows for uninterrupted key rotation where the new key can be configured while the old key is still active. After updating client applications to use the new private key, administrators can remove the old public key from the user profile.",
+    "domain": "2",
+    "topic": "Key Pair Authentication",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "id": 4670,
+        "answerText": "2",
+        "isCorrect": true,
+        "sortOrder": 0
+      },
+      {
+        "id": 4671,
+        "answerText": "1",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 4672,
+        "answerText": "5",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 4673,
+        "answerText": "Unlimited",
+        "isCorrect": false,
+        "sortOrder": 3
+      }
+    ]
+  },
+  {
+    "id": 948,
+    "questionText": "A company wants to implement row-level security where users can only see rows based on their current role or any roles lower in the role hierarchy. Which context function should be used in the row access policy to properly evaluate role hierarchy?",
+    "questionType": "single",
+    "explanation": "IS_ROLE_IN_SESSION is the recommended function when role hierarchy needs to be evaluated in row access policies. Unlike CURRENT_ROLE which only returns the active role, IS_ROLE_IN_SESSION checks if a specified role is in the current session's role hierarchy, including roles that the active role inherits. This ensures that users with higher-level roles can access data allowed for subordinate roles in the hierarchy.",
+    "domain": "2",
+    "topic": "Row Access Policies",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "CURRENT_ROLE()",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4674
+      },
+      {
+        "answerText": "IS_ROLE_IN_SESSION()",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4675
+      },
+      {
+        "answerText": "INVOKER_ROLE()",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4676
+      },
+      {
+        "answerText": "SESSION_USER()",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4677
+      }
+    ]
+  },
+  {
+    "id": 949,
+    "questionText": "A data governance team wants to apply the same masking policy to sensitive columns across multiple tables without manually assigning the policy to each column. Which feature allows them to set a masking policy on a tag so that any column with that tag is automatically protected?",
+    "questionType": "single",
+    "explanation": "Tag-based masking policies combine the object tagging and masking policy features by allowing a masking policy to be assigned to a tag using ALTER TAG. When the tag is applied to a column (either directly or through inheritance from a database, schema, or table), the masking policy automatically protects that column. This eliminates the need to manually apply masking policies to individual columns, ensuring consistent data protection across the organization.",
+    "domain": "2",
+    "topic": "Tag-based Masking Policies",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "CREATE MASKING POLICY ... WITH TAG",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4678
+      },
+      {
+        "answerText": "ALTER TAG ... SET MASKING POLICY",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4679
+      },
+      {
+        "answerText": "ALTER MASKING POLICY ... ADD TAG",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4680
+      },
+      {
+        "answerText": "CREATE TAG ... WITH MASKING POLICY",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4681
+      }
+    ]
+  },
+  {
+    "id": 950,
+    "questionText": "A table has both a row access policy and a masking policy applied to different columns. Additionally, one column is referenced in both the row access policy signature and a masking policy signature. What is the expected behavior?",
+    "questionType": "single",
+    "explanation": "A given table or view column cannot be specified in both a row access policy signature and a masking policy signature at the same time. Snowflake enforces this restriction to avoid conflicts and ambiguity in policy evaluation. When both types of policies exist on a table, they must apply to different columns. If a column must be used for row-level filtering, it cannot have a masking policy directly applied to it.",
+    "domain": "2",
+    "topic": "Row Access Policies",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "The row access policy is evaluated first, then the masking policy is applied to filtered rows",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4682
+      },
+      {
+        "answerText": "The masking policy takes precedence and the row access policy is ignored for that column",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4683
+      },
+      {
+        "answerText": "This configuration is not allowed; a column cannot be in both policy signatures simultaneously",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4684
+      },
+      {
+        "answerText": "Both policies are applied simultaneously with the masking evaluated before row filtering",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4685
+      }
+    ]
+  },
+  {
+    "id": 951,
+    "questionText": "A data engineer notices that a large table with billions of rows has queries that frequently filter on a DATE column. The SYSTEM$CLUSTERING_INFORMATION function shows an average clustering depth of 8.5. What does this clustering depth value indicate?",
+    "questionType": "single",
+    "explanation": "Clustering depth measures the average depth of overlapping micro-partitions for specified columns. A value of 1 indicates perfect clustering with no overlap, while higher values indicate more overlap and less efficient pruning. A depth of 8.5 means queries must scan on average 8.5 overlapping micro-partitions to find data for a specific value, indicating the table would benefit from defining a clustering key on the frequently filtered column to improve query performance.",
+    "domain": "3",
+    "topic": "Clustering Keys",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The table has 8.5 micro-partitions in total",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4686
+      },
+      {
+        "answerText": "On average, 8.5 overlapping micro-partitions must be scanned for filtering on that column",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4687
+      },
+      {
+        "answerText": "The table is optimally clustered and no action is needed",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4688
+      },
+      {
+        "answerText": "The clustering key has 8.5 columns defined",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4689
+      }
+    ]
+  },
+  {
+    "id": 952,
+    "questionText": "A company is experiencing query queuing during peak hours due to high concurrency. They want to use multi-cluster warehouses in Auto-scale mode. Which scaling policy should they choose if they prioritize minimizing queuing over minimizing credit costs?",
+    "questionType": "single",
+    "explanation": "The Standard scaling policy favors starting additional clusters to minimize query queuing. It starts a new cluster as soon as there are queries queuing or the system detects that query load is increasing. In contrast, the Economy scaling policy favors conserving credits by starting additional clusters only when the system estimates enough query load to keep the cluster busy for at least 6 minutes. For latency-sensitive workloads where minimizing queuing is the priority, Standard is the recommended choice.",
+    "domain": "3",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Economy - it provides better query throughput",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4690
+      },
+      {
+        "answerText": "Standard - it starts additional clusters more aggressively to minimize queuing",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4691
+      },
+      {
+        "answerText": "Maximized - it keeps all clusters running at all times",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4692
+      },
+      {
+        "answerText": "Legacy - it provides backward compatibility with optimal scaling",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4693
+      }
+    ]
+  },
+  {
+    "id": 953,
+    "questionText": "When defining a clustering key on a very large table, which column characteristic would make it a POOR candidate for direct use as a clustering key?",
+    "questionType": "single",
+    "explanation": "Columns with very high cardinality (like nanosecond timestamps or UUIDs) are poor candidates for direct use as clustering keys because they produce too many distinct values, which limits the effectiveness of data co-location. Snowflake recommends using expressions to reduce cardinality, such as TRUNC(timestamp, 'DAY') or DATE(timestamp). Columns with very low cardinality (like boolean) are also poor choices. The ideal clustering key has enough distinct values for good pruning but not so many that clustering becomes ineffective.",
+    "domain": "3",
+    "topic": "Clustering Keys",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "A column frequently used in WHERE clause filters",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4694
+      },
+      {
+        "answerText": "A column with nanosecond timestamp values resulting in extremely high cardinality",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4695
+      },
+      {
+        "answerText": "A DATE column used in range queries",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4696
+      },
+      {
+        "answerText": "A column frequently used in JOIN conditions",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4697
+      }
+    ]
+  },
+  {
+    "id": 954,
+    "questionText": "A user runs the exact same SELECT query twice within 5 minutes. The first execution takes 30 seconds, but the second execution returns results almost instantly. What Snowflake feature is responsible for this behavior?",
+    "questionType": "single",
+    "explanation": "Snowflake's query result cache (persisted query results) stores the results of executed queries for 24 hours. When an identical query is submitted and the underlying data has not changed, Snowflake returns the cached result without re-executing the query against the data. This is controlled by the USE_CACHED_RESULT session parameter, which is enabled by default. The warehouse cache and metadata cache serve different purposes - they cache raw data and object metadata respectively, not query results.",
+    "domain": "3",
+    "topic": "Query Result Cache",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Query result cache (persisted query results)",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4698
+      },
+      {
+        "answerText": "Warehouse local disk cache",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4699
+      },
+      {
+        "answerText": "Metadata cache",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4700
+      },
+      {
+        "answerText": "Micro-partition pruning",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4701
+      }
+    ]
+  },
+  {
+    "id": 955,
+    "questionText": "Which statement is TRUE about Snowflake micro-partitions?",
+    "questionType": "single",
+    "explanation": "Snowflake micro-partitions contain between 50 MB and 500 MB of uncompressed data, with actual stored size being smaller due to automatic compression. Micro-partitions are created automatically during data load and DML operations - users never need to explicitly define or maintain them. Each micro-partition stores column data independently (columnar storage), and Snowflake maintains metadata including min/max values for each column to enable efficient pruning. Micro-partitions cannot be manually created or resized by users.",
+    "domain": "3",
+    "topic": "Micro-partitions",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Users must explicitly create micro-partitions when creating tables",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4702
+      },
+      {
+        "answerText": "Micro-partitions contain between 50 MB and 500 MB of uncompressed data",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4703
+      },
+      {
+        "answerText": "Micro-partitions store data in row-based format for faster full table scans",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4704
+      },
+      {
+        "answerText": "Micro-partition size can be configured at the table level",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4705
+      }
+    ]
+  },
+  {
+    "id": 956,
+    "questionText": "A query on a large table scans 1,000,000 micro-partitions but only returns 10,000 rows from 1,000 micro-partitions. The WHERE clause filters on a column not included in the clustering key. What optimization technique would MOST effectively reduce the number of scanned micro-partitions?",
+    "questionType": "single",
+    "explanation": "When queries frequently filter on a column that is not part of the clustering key, micro-partition pruning is ineffective because the data for that column is scattered across many partitions. Adding the filtered column to the clustering key (or creating a new key with that column) allows Snowflake to reorganize the data so that rows with similar values are co-located. This dramatically improves pruning efficiency. Adding more compute resources or caching would not address the fundamental data organization issue.",
+    "domain": "3",
+    "topic": "Query Performance Optimization",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Increase the warehouse size to scan partitions faster",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4706
+      },
+      {
+        "answerText": "Add the filtered column to the clustering key definition",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4707
+      },
+      {
+        "answerText": "Enable the query result cache",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4708
+      },
+      {
+        "answerText": "Convert the table to an external table",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4709
+      }
+    ]
+  },
+  {
+    "id": 957,
+    "questionText": "An organization enables Automatic Clustering on a table with a newly defined clustering key. Which statements are TRUE about Automatic Clustering? (Select TWO)",
+    "questionType": "multi",
+    "explanation": "Automatic Clustering is a serverless feature that manages reclustering without requiring a user-provided virtual warehouse. Snowflake internally manages the compute resources and only bills for actual credits consumed. Additionally, Automatic Clustering does not block DML operations - INSERT, UPDATE, DELETE, and MERGE can proceed while reclustering occurs in the background. Users cannot designate specific warehouses for reclustering, and reclustering may not start immediately as Snowflake only reclusters when it determines the table will benefit from the operation.",
+    "domain": "3",
+    "topic": "Automatic Clustering",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Users must specify a virtual warehouse to perform the reclustering operations",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4710
+      },
+      {
+        "answerText": "Automatic Clustering does not require a user-provided warehouse and uses serverless compute",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4711
+      },
+      {
+        "answerText": "DML operations are blocked while Automatic Clustering is reclustering the table",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4712
+      },
+      {
+        "answerText": "Automatic Clustering is transparent and does not block DML statements during reclustering",
+        "isCorrect": true,
+        "sortOrder": 3,
+        "id": 4713
+      }
+    ]
+  },
+  {
+    "id": 958,
+    "questionText": "A data engineer defines a multi-column clustering key as CLUSTER BY (region, order_date) on a fact table. Most queries filter on order_date but rarely on region. What is the impact of this column ordering in the clustering key?",
+    "questionType": "single",
+    "explanation": "In a multi-column clustering key, column order matters significantly. Snowflake clusters data by the first column first, then by subsequent columns within each first-column grouping. Snowflake recommends ordering columns from lowest cardinality to highest cardinality. While region (low cardinality) before order_date (higher cardinality) follows this general guideline, the real issue is that if region is rarely used in query filters, including it as the leading column means data is primarily organized by a column that provides little pruning benefit for the actual query workload. Queries filtering primarily on order_date will experience suboptimal pruning because order_date values are scattered across region-based groupings. When selecting clustering key columns, prioritize columns frequently used in WHERE and JOIN clauses, and order them from lowest to highest cardinality.",
+    "domain": "3",
+    "topic": "Clustering Keys",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Column order has no impact; both columns are clustered equally",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4714
+      },
+      {
+        "answerText": "Queries filtering on order_date will have suboptimal pruning because region is the primary clustering column",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4715
+      },
+      {
+        "answerText": "The clustering key automatically reorders columns based on query patterns",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4716
+      },
+      {
+        "answerText": "The second column in a clustering key provides better pruning than the first",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4717
+      }
+    ]
+  },
+  {
+    "id": 959,
+    "questionText": "A multi-cluster warehouse is configured with MIN_CLUSTER_COUNT = 1, MAX_CLUSTER_COUNT = 5, and uses the Economy scaling policy. Under what condition will Snowflake start an additional cluster?",
+    "questionType": "single",
+    "explanation": "The Economy scaling policy is designed to conserve credits by being more conservative about starting additional clusters. It starts an additional cluster only when the system estimates enough query load to keep the cluster busy for at least 6 minutes. This is in contrast to the Standard scaling policy, which starts clusters more aggressively when queries are queuing. The Economy policy is suitable when cost optimization is prioritized over minimizing query latency.",
+    "domain": "3",
+    "topic": "Multi-cluster Warehouses",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "When any query enters the queue",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4718
+      },
+      {
+        "answerText": "When the system estimates enough load to keep the new cluster busy for at least 6 minutes",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4719
+      },
+      {
+        "answerText": "When warehouse CPU utilization exceeds 80%",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4720
+      },
+      {
+        "answerText": "When the number of concurrent queries exceeds 8",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4721
+      }
+    ]
+  },
+  {
+    "id": 960,
+    "questionText": "Which data types CANNOT be used directly in a clustering key definition?",
+    "questionType": "single",
+    "explanation": "Snowflake clustering keys support most data types, but GEOGRAPHY, GEOMETRY, VARIANT, OBJECT, ARRAY, and VECTOR types cannot be used directly in clustering key definitions. However, VARIANT columns can be used in clustering keys if you provide an expression that extracts a scalar value, such as using path notation (variant_col:field::string) to extract a specific field. This restriction exists because these complex types don't have a natural ordering that would enable effective data co-location. Note that the core exam primarily tests GEOGRAPHY, VARIANT, OBJECT, and ARRAY as the unsupported types.",
+    "domain": "3",
+    "topic": "Clustering Keys",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "VARCHAR, NUMBER, and BOOLEAN",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4722
+      },
+      {
+        "answerText": "DATE, TIMESTAMP, and TIME",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4723
+      },
+      {
+        "answerText": "GEOGRAPHY, VARIANT, OBJECT, and ARRAY",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4724
+      },
+      {
+        "answerText": "INTEGER, FLOAT, and DECIMAL",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4725
+      }
+    ]
+  },
+  {
+    "id": 961,
+    "questionText": "A data engineer examines the Query Profile for a long-running query and observes that a significant amount of data is being spilled to remote storage. What does this indicate, and what is the recommended action?",
+    "questionType": "single",
+    "explanation": "When a query processes more data than can fit in the local memory and SSD storage of the warehouse nodes, Snowflake spills intermediate results first to local disk (SSD) and then to remote cloud storage. Spillage to remote storage is significantly slower than local spillage due to network latency and bandwidth constraints. This typically indicates the warehouse is undersized for the query workload. The recommended action is to increase the warehouse size, which provides more memory and local storage per node to handle the data volume without remote spillage. Optimizing the query to reduce data volume (such as adding filters or reducing joins) can also help.",
+    "domain": "3",
+    "topic": "Query Profile Analysis",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The query is using too many micro-partitions; add a clustering key to the table",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4726
+      },
+      {
+        "answerText": "The warehouse does not have enough memory and local storage for the query; increase the warehouse size",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4727
+      },
+      {
+        "answerText": "The result cache has expired; re-run the query to rebuild the cache",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4728
+      },
+      {
+        "answerText": "The warehouse needs more clusters; convert to a multi-cluster warehouse with Auto-scale mode",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4729
+      }
+    ]
+  },
+  {
+    "id": 962,
+    "questionText": "Which statement accurately describes resource monitor capabilities and limitations in Snowflake?",
+    "questionType": "single",
+    "explanation": "Resource monitors can be configured with multiple NOTIFY actions (up to five) to send alerts at different credit thresholds, but only one SUSPEND action and one SUSPEND_IMMEDIATE action can be defined per monitor. Additionally, warehouse-level resource monitors cannot suspend credit usage by cloud services - after a warehouse is suspended, subsequent queries can still incur cloud services costs. Only users with the ACCOUNTADMIN role can create resource monitors, though privileges can be granted to other roles to view and modify them.",
+    "domain": "3",
+    "topic": "Resource Monitors",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "A resource monitor can have up to five NOTIFY actions but only one SUSPEND and one SUSPEND_IMMEDIATE action",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4730
+      },
+      {
+        "answerText": "A resource monitor can suspend both warehouse credits and serverless feature credits",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4731
+      },
+      {
+        "answerText": "Any user with the SYSADMIN role can create resource monitors by default",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4732
+      },
+      {
+        "answerText": "A warehouse can be assigned to multiple resource monitors simultaneously for layered cost control",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4733
+      }
+    ]
+  },
+  {
+    "id": 963,
+    "questionText": "A company experiences query queuing during peak business hours on their single-cluster warehouse. Which combination of changes would most effectively reduce queuing while also optimizing for cost?",
+    "questionType": "single",
+    "explanation": "Converting to a multi-cluster warehouse in Auto-scale mode with the Standard scaling policy is the most effective approach for reducing queuing while maintaining cost awareness. Auto-scale mode automatically adds clusters when queries are queued and removes them when load decreases. The Standard policy aggressively starts new clusters when queuing occurs, minimizing wait times. Maximized mode with Economy scaling policy (option A) is contradictory: Maximized mode means MIN_CLUSTER_COUNT = MAX_CLUSTER_COUNT, so all clusters run constantly regardless of load and the scaling policy has no effect. Simply increasing warehouse size (option C) improves single-query performance but does not address concurrency-based queuing. The Economy policy (option D) would still allow queuing as it waits for sustained load before scaling.",
+    "domain": "3",
+    "topic": "Scaling Policies",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Convert to multi-cluster warehouse with Maximized mode and Economy scaling policy",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4734
+      },
+      {
+        "answerText": "Convert to multi-cluster warehouse with Auto-scale mode and Standard scaling policy",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4735
+      },
+      {
+        "answerText": "Keep single-cluster warehouse but increase the warehouse size from Medium to Large",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4736
+      },
+      {
+        "answerText": "Convert to multi-cluster warehouse with Auto-scale mode and Economy scaling policy",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4737
+      }
+    ]
+  },
+  {
+    "id": 964,
+    "questionText": "A data engineer uses COPY INTO with ON_ERROR = 'CONTINUE' and PURGE = TRUE to load files from a stage. Some files contain rows with data errors. What happens to the source files after loading completes?",
+    "questionType": "single",
+    "explanation": "When ON_ERROR = CONTINUE is used, Snowflake loads valid rows and skips rows with errors. With PURGE = TRUE, Snowflake purges files that are considered 'successfully loaded.' Because ON_ERROR = CONTINUE processes the file (loading valid rows while skipping bad ones), Snowflake treats the file as loaded and the file IS purged from the stage -- even though some rows were not loaded. This means the original source file is deleted and the errored rows cannot be reprocessed. This is a common pitfall: combining PURGE = TRUE with ON_ERROR = CONTINUE can lead to data loss for error rows. Best practice is to avoid this combination when data completeness is critical, or to validate data before loading.",
+    "domain": "4",
+    "topic": "COPY INTO Command",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Files are NOT purged because they contained errors, preserving them for reprocessing",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4738
+      },
+      {
+        "answerText": "Files are purged even though some rows had errors, because ON_ERROR = CONTINUE treats the file as loaded",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4739
+      },
+      {
+        "answerText": "Only the specific rows that failed are retained in the stage as a separate error file",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4740
+      },
+      {
+        "answerText": "The PURGE option is automatically disabled when ON_ERROR is set to CONTINUE",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4741
+      }
+    ]
+  },
+  {
+    "id": 965,
+    "questionText": "Which of the following correctly describes the behavior of MATCH_BY_COLUMN_NAME parameter in the COPY INTO <table> command?",
+    "questionType": "single",
+    "explanation": "The MATCH_BY_COLUMN_NAME parameter allows Snowflake to load data by matching column names in the source file (such as Parquet or ORC headers, or JSON keys) to the target table column names, rather than relying on column position. When set to CASE_INSENSITIVE, column name matching ignores case differences. When set to CASE_SENSITIVE, exact case matching is required. This feature is particularly useful when the order of columns in the source file differs from the target table structure.",
+    "domain": "4",
+    "topic": "COPY INTO Command",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "It enables loading data from files where column order matches the target table",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4742
+      },
+      {
+        "answerText": "It maps source file columns to target table columns by name rather than position",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4743
+      },
+      {
+        "answerText": "It validates that all source column names exist in the target table before loading",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4744
+      },
+      {
+        "answerText": "It automatically creates missing columns in the target table based on file headers",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4745
+      }
+    ]
+  },
+  {
+    "id": 966,
+    "questionText": "A data engineer needs to configure Snowpipe to automatically ingest files from an Amazon S3 bucket. Which AWS service must be configured to enable event-driven file loading with Snowpipe?",
+    "questionType": "single",
+    "explanation": "To enable automated, event-driven data loading with Snowpipe from Amazon S3, you must configure S3 Event Notifications to send messages to an Amazon Simple Queue Service (SQS) queue. Snowflake manages this SQS queue internally when you enable AUTO_INGEST=TRUE on the pipe. When new files arrive in the S3 bucket, S3 sends a notification to the SQS queue, which triggers Snowpipe to load the new files automatically. This eliminates the need for polling and provides near real-time data ingestion.",
+    "domain": "4",
+    "topic": "Snowpipe",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "AWS Lambda functions",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4746
+      },
+      {
+        "answerText": "Amazon Simple Notification Service (SNS)",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4747
+      },
+      {
+        "answerText": "Amazon Simple Queue Service (SQS) with S3 Event Notifications",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4748
+      },
+      {
+        "answerText": "AWS CloudWatch Events",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4749
+      }
+    ]
+  },
+  {
+    "id": 967,
+    "questionText": "What is the recommended maximum file size for bulk data loading using the COPY INTO command to achieve optimal parallel processing?",
+    "questionType": "single",
+    "explanation": "Snowflake recommends splitting large data files into files between 100 MB and 250 MB in size (compressed) for optimal bulk loading performance. This file size allows Snowflake to effectively parallelize the load operation across multiple compute resources in the virtual warehouse. Files that are too small create excessive overhead, while files that are too large cannot be efficiently parallelized. This best practice applies to the COPY INTO command for bulk loading operations.",
+    "domain": "4",
+    "topic": "Bulk Loading Best Practices",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "10 MB - 50 MB compressed",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4750
+      },
+      {
+        "answerText": "100 MB - 250 MB compressed",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4751
+      },
+      {
+        "answerText": "500 MB - 1 GB compressed",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4752
+      },
+      {
+        "answerText": "1 GB - 5 GB compressed",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4753
+      }
+    ]
+  },
+  {
+    "id": 968,
+    "questionText": "When creating an external stage that references an S3 bucket, which of the following authentication methods is recommended by Snowflake for production environments?",
+    "questionType": "single",
+    "explanation": "Snowflake recommends using a Storage Integration object for authenticating to external cloud storage in production environments. Storage Integrations use IAM roles (for AWS) with trust relationships, avoiding the need to store sensitive credentials directly in stage definitions. This approach is more secure than embedding AWS keys, provides centralized credential management, and allows Snowflake to assume a role with least-privilege permissions. Storage Integrations also support credential rotation without modifying stage definitions.",
+    "domain": "4",
+    "topic": "Stages",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "AWS access key and secret key embedded in the stage definition",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4754
+      },
+      {
+        "answerText": "Storage Integration object with IAM role",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4755
+      },
+      {
+        "answerText": "Public bucket access with no authentication",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4756
+      },
+      {
+        "answerText": "Temporary session tokens renewed hourly",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4757
+      }
+    ]
+  },
+  {
+    "id": 969,
+    "questionText": "Which file format options are ONLY available for CSV (delimited) file formats and NOT applicable to semi-structured formats like JSON or Parquet?",
+    "questionType": "single",
+    "explanation": "FIELD_DELIMITER, RECORD_DELIMITER, and ESCAPE_UNENCLOSED_FIELD are file format options specific to CSV (character-delimited) file formats. These options control how fields and records are separated and how special characters are handled in delimited text files. Semi-structured formats like JSON, Parquet, Avro, and ORC have their own internal structure and do not use field or record delimiters. STRIP_OUTER_ARRAY and STRIP_NULL_VALUES (option C) are JSON-specific options. For option D, ERROR_ON_COLUMN_COUNT_MISMATCH is actually CSV-only, but NULL_IF applies to CSV directly and also conditionally to JSON and Parquet (when using MATCH_BY_COLUMN_NAME), so the combination is not exclusively CSV. COMPRESSION (option A) applies to most file formats including CSV, JSON, and Parquet.",
+    "domain": "4",
+    "topic": "File Formats",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "COMPRESSION and BINARY_FORMAT",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4758
+      },
+      {
+        "answerText": "FIELD_DELIMITER, RECORD_DELIMITER, and ESCAPE_UNENCLOSED_FIELD",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4759
+      },
+      {
+        "answerText": "STRIP_OUTER_ARRAY and STRIP_NULL_VALUES",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4760
+      },
+      {
+        "answerText": "NULL_IF and ERROR_ON_COLUMN_COUNT_MISMATCH",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4761
+      }
+    ]
+  },
+  {
+    "id": 970,
+    "questionText": "A table stage is being used to load data. Which statement accurately describes the characteristics of a table stage?",
+    "questionType": "single",
+    "explanation": "Table stages in Snowflake are automatically created for every table and are referenced using @%table_name syntax. They can ONLY be used to load data into the specific table they are associated with. A key limitation is that table stages do not support data transformations during load (using a SELECT query as the COPY INTO source) -- only user stages (@~) and named stages support this. Each table has exactly one table stage that cannot be altered, dropped, or shared. Unlike named stages, table stages have no grantable privileges of their own; access is controlled through the OWNERSHIP privilege on the table itself.",
+    "domain": "4",
+    "topic": "Stages",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Table stages can be shared across multiple tables within the same schema",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4762
+      },
+      {
+        "answerText": "Table stages support the same transformations as named external stages",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4763
+      },
+      {
+        "answerText": "Each table has one table stage that can only load data into that specific table",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4764
+      },
+      {
+        "answerText": "Table stages must be explicitly created using CREATE STAGE command",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4765
+      }
+    ]
+  },
+  {
+    "id": 971,
+    "questionText": "When loading Parquet files using COPY INTO, which statement is TRUE regarding schema handling?",
+    "questionType": "single",
+    "explanation": "When loading Parquet files, Snowflake can automatically detect the schema from the Parquet file metadata using the INFER_SCHEMA function or by loading into a VARIANT column. Unlike CSV files, Parquet files contain embedded schema information including column names, data types, and nested structures. This allows Snowflake to use MATCH_BY_COLUMN_NAME to map Parquet columns to table columns by name. However, explicit column mapping can still be specified in the COPY INTO statement for precise control.",
+    "domain": "4",
+    "topic": "File Formats",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Parquet files require an explicit schema definition before loading",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4766
+      },
+      {
+        "answerText": "Snowflake can use embedded Parquet metadata to infer schema and match columns by name",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4767
+      },
+      {
+        "answerText": "Parquet files must always be loaded into VARIANT columns",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4768
+      },
+      {
+        "answerText": "Schema detection for Parquet requires Snowflake Enterprise Edition",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4769
+      }
+    ]
+  },
+  {
+    "id": 972,
+    "questionText": "What is the primary difference between using Snowpipe with AUTO_INGEST=TRUE versus calling the Snowpipe REST API?",
+    "questionType": "single",
+    "explanation": "With AUTO_INGEST=TRUE, Snowpipe automatically detects new files through cloud provider event notifications (S3 events, Azure Event Grid, GCS Pub/Sub) and triggers loading without any application intervention. The Snowpipe REST API requires your application to explicitly call the insertFiles endpoint to notify Snowflake about new files to load. AUTO_INGEST provides a fully automated, serverless approach, while the REST API gives applications programmatic control over when files are submitted for loading.",
+    "domain": "4",
+    "topic": "Snowpipe",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "AUTO_INGEST uses larger virtual warehouses for faster processing",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4770
+      },
+      {
+        "answerText": "REST API provides automatic file detection while AUTO_INGEST requires manual triggers",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4771
+      },
+      {
+        "answerText": "AUTO_INGEST uses cloud events for automatic detection; REST API requires explicit file submission",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4772
+      },
+      {
+        "answerText": "AUTO_INGEST only works with internal stages while REST API works with external stages",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4773
+      }
+    ]
+  },
+  {
+    "id": 973,
+    "questionText": "Which ON_ERROR option in the COPY INTO command will load all valid rows from a file while skipping rows that contain errors, and continue processing subsequent files?",
+    "questionType": "single",
+    "explanation": "The ON_ERROR = CONTINUE option instructs Snowflake to continue loading valid rows even when errors are encountered in individual rows. It skips the rows with errors and proceeds with loading the remaining valid data from the current file and subsequent files. SKIP_FILE skips the entire file when an error is found, ABORT_STATEMENT stops the entire COPY operation on the first error, and SKIP_FILE_<num> skips files with more than the specified number of errors.",
+    "domain": "4",
+    "topic": "COPY INTO Command",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "ON_ERROR = SKIP_FILE",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4774
+      },
+      {
+        "answerText": "ON_ERROR = ABORT_STATEMENT",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4775
+      },
+      {
+        "answerText": "ON_ERROR = CONTINUE",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4776
+      },
+      {
+        "answerText": "ON_ERROR = SKIP_FILE_3",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4777
+      }
+    ]
+  },
+  {
+    "id": 974,
+    "questionText": "An organization needs to export data from a Snowflake table to an internal stage, and then download the resulting files to a local machine. Which sequence of commands should be used to accomplish this task?",
+    "questionType": "single",
+    "explanation": "The data unloading process in Snowflake involves two steps: First, use COPY INTO <location> to export data from a table into files in a stage (internal or external). Second, if using an internal stage, use the GET command to download the files to a local directory. The GET command only works with internal Snowflake stages (user, table, or named stages) - for external stages like S3 or Azure, you must use the cloud provider's native tools to download the files.",
+    "domain": "4",
+    "topic": "Data Unloading",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "GET to download from the table, then PUT to upload to local storage",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4778
+      },
+      {
+        "answerText": "COPY INTO <location> to unload to the stage, then GET to download locally",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4779
+      },
+      {
+        "answerText": "EXPORT to create files in the stage, then DOWNLOAD to retrieve them",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4780
+      },
+      {
+        "answerText": "GET to extract data to the stage, then COPY INTO <location> to download locally",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4781
+      }
+    ]
+  },
+  {
+    "id": 975,
+    "questionText": "A data engineer is loading CSV data into a Snowflake table and wants to apply transformations such as column reordering and data type conversions using a SELECT statement in the COPY command. Which statement is TRUE about using VALIDATION_MODE with this approach?",
+    "questionType": "single",
+    "explanation": "When using COPY INTO <table> with a SELECT statement to transform data during load (such as reordering columns, omitting columns, or applying functions), the VALIDATION_MODE parameter is not supported. This limitation exists because transformations alter the data before loading, which makes pre-validation of the source file structure less meaningful. To validate transformed loads, you must perform the actual load with appropriate ON_ERROR settings or test with a subset of data.",
+    "domain": "4",
+    "topic": "Data Transformation During Load",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "VALIDATION_MODE can be used with RETURN_ALL_ERRORS to validate transformations",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4782
+      },
+      {
+        "answerText": "VALIDATION_MODE must be set to RETURN_ROWS when using transformations",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4783
+      },
+      {
+        "answerText": "VALIDATION_MODE does not support COPY statements that transform data during a load",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4784
+      },
+      {
+        "answerText": "VALIDATION_MODE requires MATCH_BY_COLUMN_NAME to be enabled for transformations",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4785
+      }
+    ]
+  },
+  {
+    "id": 976,
+    "questionText": "A data engineer creates a secure view to share sensitive data with an external consumer through Snowflake's Secure Data Sharing. The consumer reports that the view definition is not visible in the SHOW VIEWS output. Which statement best explains this behavior?",
+    "questionType": "single",
+    "explanation": "Secure views in Snowflake hide the view definition from unauthorized users to prevent exposure of underlying table structures and internal logic. Only users granted the role that owns the view can see the definition. This protection extends to SHOW VIEWS, DESCRIBE VIEW, and Information Schema queries. However, users with ACCOUNTADMIN role or IMPORTED PRIVILEGES on the SNOWFLAKE database can still access secure view definitions through the Account Usage VIEWS view.",
+    "domain": "5",
+    "topic": "Secure Views",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The view definition is only visible to users who have been granted the role that owns the secure view",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4786
+      },
+      {
+        "answerText": "Secure views do not support SHOW VIEWS command at all",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4787
+      },
+      {
+        "answerText": "The consumer must have SELECT privilege on the base tables to see the view definition",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4788
+      },
+      {
+        "answerText": "View definitions are never visible for shared data regardless of view type",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4789
+      }
+    ]
+  },
+  {
+    "id": 977,
+    "questionText": "A company has created a materialized view on a large table that is frequently queried with aggregations. A user runs a query against the base table, not the materialized view, but the Query Profile shows the materialized view was used. What explains this behavior?",
+    "questionType": "single",
+    "explanation": "Snowflake's query optimizer can automatically rewrite queries against base tables to use materialized views when it determines this would be more efficient. This is called automatic query rewriting. If a materialized view contains all the rows and columns needed by a query, the optimizer may choose to scan the materialized view instead of the base table. This behavior is transparent to users and can significantly improve query performance without requiring explicit references to the materialized view. Note that materialized views require Snowflake Enterprise Edition or higher.",
+    "domain": "3",
+    "topic": "Materialized Views",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "This is expected behavior - Snowflake's optimizer can automatically rewrite queries to use materialized views when beneficial",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4790
+      },
+      {
+        "answerText": "This indicates an error in the Query Profile display",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4791
+      },
+      {
+        "answerText": "The user must have directly referenced the materialized view without realizing it",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4792
+      },
+      {
+        "answerText": "Materialized views always replace base table queries automatically",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4793
+      }
+    ]
+  },
+  {
+    "id": 978,
+    "questionText": "A data engineer is implementing change data capture (CDC) on a table and needs to understand the metadata columns provided by streams. Which columns are included when querying a stream?",
+    "questionType": "single",
+    "explanation": "When querying a stream in Snowflake, three metadata columns are available: METADATA$ACTION indicates whether the row is an INSERT or DELETE; METADATA$ISUPDATE is TRUE when the operation represents the delete and insert parts of an update (both rows have this set to TRUE); and METADATA$ROW_ID is a unique, immutable identifier for tracking changes over time. These columns help distinguish between different types of DML operations captured by the stream.",
+    "domain": "5",
+    "topic": "Streams",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "METADATA$ACTION, METADATA$ISUPDATE, and METADATA$ROW_ID",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4794
+      },
+      {
+        "answerText": "METADATA$OPERATION, METADATA$TIMESTAMP, and METADATA$USER",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4795
+      },
+      {
+        "answerText": "METADATA$TYPE, METADATA$CHANGED_AT, and METADATA$SEQUENCE",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4796
+      },
+      {
+        "answerText": "METADATA$INSERT, METADATA$DELETE, and METADATA$UPDATE",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4797
+      }
+    ]
+  },
+  {
+    "id": 979,
+    "questionText": "A data engineer needs to create a task that runs automatically without specifying a virtual warehouse. Which statement correctly describes how to configure a serverless task?",
+    "questionType": "single",
+    "explanation": "Serverless tasks in Snowflake are created by omitting the WAREHOUSE parameter in the CREATE TASK statement. When WAREHOUSE is not specified, Snowflake automatically manages compute resources by predicting and assigning resources based on dynamic analysis of previous task runs. The role executing the task must have the EXECUTE MANAGED TASK global privilege. Serverless tasks can scale up to XXLARGE equivalent warehouse size.",
+    "domain": "5",
+    "topic": "Tasks",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Omit the WAREHOUSE parameter when creating the task and ensure the role has EXECUTE MANAGED TASK privilege",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4798
+      },
+      {
+        "answerText": "Set WAREHOUSE = 'SERVERLESS' in the CREATE TASK statement",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4799
+      },
+      {
+        "answerText": "Use the SERVERLESS_MODE = TRUE parameter in CREATE TASK",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4800
+      },
+      {
+        "answerText": "Create the task with any warehouse and Snowflake automatically converts it to serverless",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4801
+      }
+    ]
+  },
+  {
+    "id": 980,
+    "questionText": "A stream was created on a table three weeks ago but has not been consumed. The table's DATA_RETENTION_TIME_IN_DAYS is set to 7 days and MAX_DATA_EXTENSION_TIME_IN_DAYS is at the default value of 14. What happens when attempting to query the stream?",
+    "questionType": "single",
+    "explanation": "A stream becomes stale when its offset falls outside the effective data retention period for the source table. Snowflake automatically extends the data retention period (via the MAX_DATA_EXTENSION_TIME_IN_DAYS parameter, default 14 days) to prevent streams from going stale. However, once the stream's offset exceeds even this extended retention window, the stream becomes stale. In this scenario, with a 7-day retention and a 14-day maximum extension, the stream's offset at 3 weeks (21 days) exceeds the 14-day extended window, making the stream stale. A stale stream cannot provide accurate CDC records and must be recreated.",
+    "domain": "5",
+    "topic": "Streams",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "The stream becomes stale because its offset exceeds the extended data retention period, and it must be recreated",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4802
+      },
+      {
+        "answerText": "The stream indefinitely extends the data retention period to preserve all change records",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4803
+      },
+      {
+        "answerText": "The stream returns only the changes from the last 7 days",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4804
+      },
+      {
+        "answerText": "Snowflake automatically advances the stream offset to prevent staleness",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4805
+      }
+    ]
+  },
+  {
+    "id": 981,
+    "questionText": "A data engineer is building a task graph (DAG) with multiple child tasks. What is the correct approach to define a child task that runs after two parent tasks complete?",
+    "questionType": "single",
+    "explanation": "In Snowflake task graphs, child tasks are created using CREATE TASK with the AFTER clause specifying one or more parent tasks. When multiple parent tasks are listed, the child task runs only after ALL specified parent tasks complete successfully. This allows for building complex DAGs with parallel and sequential execution patterns. A task can have up to 100 parent tasks and 100 child tasks, and the entire graph is limited to 1000 tasks.",
+    "domain": "5",
+    "topic": "Tasks",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Use CREATE TASK child_task ... AFTER parent_task_1, parent_task_2",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4806
+      },
+      {
+        "answerText": "Use CREATE TASK child_task ... DEPENDS ON parent_task_1, parent_task_2",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4807
+      },
+      {
+        "answerText": "Use CREATE TASK child_task ... PREDECESSOR (parent_task_1, parent_task_2)",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4808
+      },
+      {
+        "answerText": "Use CREATE TASK child_task ... WAIT FOR parent_task_1, parent_task_2",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4809
+      }
+    ]
+  },
+  {
+    "id": 982,
+    "questionText": "A company needs to track only INSERT operations on a high-volume logging table where records are never updated or deleted. Which stream type provides the best performance?",
+    "questionType": "single",
+    "explanation": "Append-only streams exclusively track row inserts and do not capture UPDATE, DELETE, or TRUNCATE operations. This makes them significantly more performant than standard streams for insert-only workloads because they don't need to track the full change lifecycle. Standard streams track all DML operations (INSERT, UPDATE, DELETE) and perform joins on inserted and deleted rows to compute the delta, which adds overhead. Append-only streams are supported on standard tables, dynamic tables, Snowflake-managed Iceberg tables, and views. Note: Insert-only streams are a different type specifically designed for external tables and externally managed Iceberg tables.",
+    "domain": "5",
+    "topic": "Streams",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Append-only stream - it tracks only inserts and is more performant for insert-only workloads",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4810
+      },
+      {
+        "answerText": "Standard stream - it automatically optimizes for insert-only tables",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4811
+      },
+      {
+        "answerText": "Insert-only stream - specifically designed for internal tables with no updates",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4812
+      },
+      {
+        "answerText": "Delta stream - captures only the changes without the overhead of tracking updates",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4813
+      }
+    ]
+  },
+  {
+    "id": 983,
+    "questionText": "When comparing secure views to non-secure views, which statement accurately describes a key trade-off?",
+    "questionType": "single",
+    "explanation": "Secure views protect the view definition and prevent internal optimizations that could indirectly expose underlying data patterns. However, this protection comes at a performance cost - secure views do not utilize certain query optimizations available to non-secure views. Additionally, the internals of secure views are not exposed in Query Profile, even to the view owner. Organizations should weigh security requirements against performance needs when choosing between secure and non-secure views.",
+    "domain": "5",
+    "topic": "Secure Views",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Secure views provide better data protection but may execute more slowly due to disabled optimizations",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4814
+      },
+      {
+        "answerText": "Secure views are faster because they bypass certain security checks",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4815
+      },
+      {
+        "answerText": "Secure views have the same performance as non-secure views with additional security features",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4816
+      },
+      {
+        "answerText": "Secure views require Enterprise edition while non-secure views work on all editions",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4817
+      }
+    ]
+  },
+  {
+    "id": 984,
+    "questionText": "A data engineer wants to ensure a materialized view is maintained with the latest data. How does Snowflake handle materialized view maintenance?",
+    "questionType": "single",
+    "explanation": "Snowflake automatically and transparently maintains materialized views using a background service that updates them after DML changes to the base table. Users do not need to implement any refresh logic at the application level. Data accessed through materialized views is always current - if a query runs before the view is fully up-to-date, Snowflake either updates the view first or uses the up-to-date portions combined with newer data from the base table. This maintenance does consume credits and should be factored into cost considerations.",
+    "domain": "5",
+    "topic": "Materialized Views",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "A background service automatically updates materialized views after DML changes to the base table",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4818
+      },
+      {
+        "answerText": "Users must manually run REFRESH MATERIALIZED VIEW to update the data",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4819
+      },
+      {
+        "answerText": "Materialized views are updated only during scheduled maintenance windows",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4820
+      },
+      {
+        "answerText": "A task must be created to periodically refresh the materialized view",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4821
+      }
+    ]
+  },
+  {
+    "id": 985,
+    "questionText": "A data pipeline uses a stream to capture changes from a source table. The pipeline runs a DML statement that consumes the stream within an explicit transaction. What happens to the stream offset if the transaction is rolled back?",
+    "questionType": "single",
+    "explanation": "Stream offsets advance only when the consuming transaction commits successfully. If a DML statement consumes stream data within an explicit transaction (BEGIN...COMMIT) and the transaction is rolled back, the stream offset does not advance and remains at its previous position. This ensures exactly-once processing semantics - the same change records will be available when the stream is queried again. Streams use repeatable read isolation, meaning queries within a transaction see consistent data.",
+    "domain": "5",
+    "topic": "Streams",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "The stream offset does not advance and the same change records will be available in subsequent queries",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4822
+      },
+      {
+        "answerText": "The stream offset advances regardless of transaction outcome to prevent duplicate processing",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4823
+      },
+      {
+        "answerText": "The stream becomes invalid and must be recreated after a rollback",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4824
+      },
+      {
+        "answerText": "The stream offset advances but the rolled-back records are marked for reprocessing",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4825
+      }
+    ]
+  },
+  {
+    "id": 986,
+    "questionText": "A developer needs to extract all elements from a JSON array stored in a VARIANT column and join the results with other columns in the same table. Which approach correctly accomplishes this?",
+    "questionType": "single",
+    "explanation": "The FLATTEN function is a table function that explodes arrays or objects into multiple rows. When used with LATERAL (which is implicit when FLATTEN appears in the FROM clause after a comma), it allows each element from the array to be joined with its corresponding row. The syntax 'FROM table, LATERAL FLATTEN(input => column:array_path)' creates a lateral join that produces one row per array element while maintaining access to other columns. UNNEST() is a function from PostgreSQL/BigQuery and is not available in Snowflake. Using FLATTEN in a WHERE clause or SELECT list without the FROM clause lateral join pattern is also invalid.",
+    "domain": "5",
+    "topic": "FLATTEN Function",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "SELECT * FROM my_table CROSS JOIN UNNEST(variant_col:items)",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4826
+      },
+      {
+        "answerText": "SELECT * FROM my_table, LATERAL FLATTEN(input => variant_col:items)",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4827
+      },
+      {
+        "answerText": "SELECT * FROM my_table WHERE FLATTEN(variant_col:items) IS NOT NULL",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4828
+      },
+      {
+        "answerText": "SELECT FLATTEN(variant_col:items) FROM my_table GROUP BY 1",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4829
+      }
+    ]
+  },
+  {
+    "id": 987,
+    "questionText": "When using the FLATTEN function with the RECURSIVE parameter set to TRUE, what behavior is enabled?",
+    "questionType": "single",
+    "explanation": "Setting RECURSIVE => TRUE in the FLATTEN function causes it to recursively expand all nested arrays and objects within the input. This is particularly useful when you need to explore deeply nested semi-structured data or extract all key-value pairs from complex JSON structures. Without this parameter, FLATTEN only expands the first level of the specified input.",
+    "domain": "5",
+    "topic": "FLATTEN Function",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The function will only process the first array element repeatedly",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4830
+      },
+      {
+        "answerText": "The function will expand all nested arrays and objects at all levels",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4831
+      },
+      {
+        "answerText": "The function will create a recursive CTE automatically",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4832
+      },
+      {
+        "answerText": "The function will duplicate rows for performance optimization",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4833
+      }
+    ]
+  },
+  {
+    "id": 988,
+    "questionText": "A table contains a VARIANT column with JSON data. Which statement correctly extracts a nested value and casts it to a specific data type?",
+    "questionType": "single",
+    "explanation": "In Snowflake, you access VARIANT data using colon notation for the first level (column:key) and dot notation for subsequent levels (column:key.subkey). To cast the extracted VARIANT value to a specific type, you use the double-colon cast operator (::). The correct syntax is column:path::datatype. Array elements are accessed using bracket notation with zero-based indexing. Note: GET_PATH(column, 'path') is a valid equivalent to colon notation, but the path must use dot notation (e.g., 'customer.name'), not forward slashes. The arrow operator (->) is PostgreSQL syntax and is not supported in Snowflake.",
+    "domain": "5",
+    "topic": "Semi-structured Data",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "SELECT CAST(data.customer.name AS VARCHAR) FROM orders",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4834
+      },
+      {
+        "answerText": "SELECT data:customer.name::VARCHAR FROM orders",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4835
+      },
+      {
+        "answerText": "SELECT data->customer->name::VARCHAR FROM orders",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4836
+      },
+      {
+        "answerText": "SELECT GET_PATH(data, 'customer/name')::VARCHAR FROM orders",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4837
+      }
+    ]
+  },
+  {
+    "id": 989,
+    "questionText": "What is a key characteristic that distinguishes transient tables from permanent tables in Snowflake?",
+    "questionType": "single",
+    "explanation": "Transient tables in Snowflake persist until explicitly dropped and are visible to all users with appropriate privileges, but they do not have a Fail-safe period. Transient tables support Time Travel for 0 or 1 day only (unlike permanent tables which can have up to 90 days on Enterprise edition). Once Time Travel expires, the data cannot be recovered by Snowflake because there is no Fail-safe period. This makes transient tables suitable for staging or intermediate data that does not require long-term disaster recovery protection, and helps reduce storage costs.",
+    "domain": "1",
+    "topic": "Table Types",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Transient tables are automatically dropped at the end of each session",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4838
+      },
+      {
+        "answerText": "Transient tables do not have a Fail-safe period for disaster recovery",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4839
+      },
+      {
+        "answerText": "Transient tables cannot be shared with other accounts",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4840
+      },
+      {
+        "answerText": "Transient tables do not support Time Travel at all",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4841
+      }
+    ]
+  },
+  {
+    "id": 990,
+    "questionText": "A developer creates a temporary table with the same name as an existing permanent table in the same schema. What happens when the developer queries the table by name during the session?",
+    "questionType": "single",
+    "explanation": "In Snowflake, temporary tables take precedence over permanent and transient tables with the same name within the same session. This means the temporary table effectively 'hides' the permanent table for all operations during that session. Once the session ends, the temporary table is automatically dropped, and subsequent queries will again access the permanent table. This behavior can lead to unexpected results if not carefully managed.",
+    "domain": "1",
+    "topic": "Table Types",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "An error is raised due to duplicate table names in the schema",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4842
+      },
+      {
+        "answerText": "The query accesses the temporary table, which takes precedence",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4843
+      },
+      {
+        "answerText": "The query accesses the permanent table since it was created first",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4844
+      },
+      {
+        "answerText": "The query returns a union of results from both tables",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4845
+      }
+    ]
+  },
+  {
+    "id": 991,
+    "questionText": "Which statement about Snowflake sequences is TRUE?",
+    "questionType": "single",
+    "explanation": "Snowflake sequences generate unique values within a given sequence across all sessions and concurrent statements, but they do not guarantee gap-free sequences. Gaps can occur due to transaction rollbacks, caching behavior, or system operations. Uniqueness is guaranteed as long as the sign of the sequence interval does not change. Unlike some other databases, Snowflake does not support CURRVAL - only NEXTVAL is available. Each reference to sequence.NEXTVAL in a query generates a distinct value, even within the same row.",
+    "domain": "5",
+    "topic": "Sequences",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Sequences guarantee contiguous, gap-free number generation",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4846
+      },
+      {
+        "answerText": "Sequences support both CURRVAL and NEXTVAL references",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4847
+      },
+      {
+        "answerText": "Sequence values are globally unique but not guaranteed to be gap-free",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4848
+      },
+      {
+        "answerText": "Multiple NEXTVAL references in one SELECT return the same value per row",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4849
+      }
+    ]
+  },
+  {
+    "id": 992,
+    "questionText": "A query uses FLATTEN to process a VARIANT column containing nested JSON. Which columns are returned by the FLATTEN function that can be used in the SELECT clause?",
+    "questionType": "single",
+    "explanation": "The FLATTEN function returns several columns: SEQ (sequence number), KEY (element key for objects or NULL for arrays), PATH (path to the element), INDEX (array index or NULL for objects), VALUE (the element value), and THIS (reference to the containing structure). These columns allow detailed analysis of semi-structured data including the path to each element and its position within arrays or objects.",
+    "domain": "5",
+    "topic": "FLATTEN Function",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Only VALUE and KEY columns",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4850
+      },
+      {
+        "answerText": "SEQ, KEY, PATH, INDEX, VALUE, and THIS columns",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4851
+      },
+      {
+        "answerText": "ROW_NUMBER, ELEMENT, and DATA columns",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4852
+      },
+      {
+        "answerText": "ARRAY_INDEX, OBJECT_KEY, and ELEMENT_VALUE columns",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4853
+      }
+    ]
+  },
+  {
+    "id": 993,
+    "questionText": "Which function should be used to convert a JSON string stored as VARCHAR into a VARIANT data type for semi-structured data processing in Snowflake?",
+    "questionType": "single",
+    "explanation": "PARSE_JSON is the function used to convert a JSON-formatted string (VARCHAR) into a VARIANT data type. This enables the use of Snowflake's semi-structured data operators like colon notation and functions like FLATTEN. TO_VARIANT converts scalar values to VARIANT but does not parse JSON strings. TRY_PARSE_JSON works like PARSE_JSON but returns NULL instead of an error for invalid JSON.",
+    "domain": "5",
+    "topic": "Semi-structured Data",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "TO_VARIANT()",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4854
+      },
+      {
+        "answerText": "PARSE_JSON()",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4855
+      },
+      {
+        "answerText": "JSON_EXTRACT()",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4856
+      },
+      {
+        "answerText": "CONVERT_TO_VARIANT()",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4857
+      }
+    ]
+  },
+  {
+    "id": 994,
+    "questionText": "A database administrator dropped an important table by mistake 3 days ago. The table was in a schema with DATA_RETENTION_TIME_IN_DAYS set to 1 day, but the administrator later increased the retention period to 7 days hoping to recover the table. Can the table still be recovered using UNDROP?",
+    "questionType": "single",
+    "explanation": "When a table is dropped, it retains the data retention period that was in effect at the time it was dropped. Changing the retention period for the schema or database after the table is dropped does not affect the already-dropped table. Since the table had a 1-day retention period when dropped, and 3 days have passed, the data has already moved to Fail-safe and cannot be recovered using Time Travel or UNDROP.",
+    "domain": "6",
+    "topic": "Time Travel",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Yes, because increasing the retention period retroactively extends the Time Travel window for all objects",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4858
+      },
+      {
+        "answerText": "No, because dropped objects retain their original retention period and cannot be modified after being dropped",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4859
+      },
+      {
+        "answerText": "Yes, because the new 7-day retention period applies immediately to all objects in the schema",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4860
+      },
+      {
+        "answerText": "No, because Time Travel does not support the UNDROP command for tables",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4861
+      }
+    ]
+  },
+  {
+    "id": 995,
+    "questionText": "What is the primary purpose of Snowflake's Fail-safe feature, and how does it differ from Time Travel?",
+    "questionType": "single",
+    "explanation": "Fail-safe is a data recovery service provided on a best-effort basis, intended only for use when all other recovery options have been attempted. Unlike Time Travel, which allows users to directly query or restore historical data, Fail-safe data can only be recovered by Snowflake Support in case of extreme operational failures. The Fail-safe period is a non-configurable 7 days that begins after the Time Travel retention period ends.",
+    "domain": "6",
+    "topic": "Fail-safe",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Fail-safe allows users to query historical data for an additional 7 days after Time Travel expires",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4862
+      },
+      {
+        "answerText": "Fail-safe is a Snowflake-managed recovery service for extreme failures, with data recoverable only by Snowflake Support",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4863
+      },
+      {
+        "answerText": "Fail-safe provides a configurable backup period that can be extended up to 90 days for Enterprise accounts",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4864
+      },
+      {
+        "answerText": "Fail-safe automatically restores dropped tables without requiring administrator intervention",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4865
+      }
+    ]
+  },
+  {
+    "id": 996,
+    "questionText": "When cloning a database that contains tables, schemas, and views, which statement accurately describes how access control privileges are handled?",
+    "questionType": "single",
+    "explanation": "When cloning a database, the clone of child objects (tables, views, schemas within the database) inherits all granted privileges from the source objects. However, the clone of the container itself (the database) does not inherit the privileges granted on the source container. To copy grants on the database itself, you must use the COPY GRANTS option in the CREATE DATABASE ... CLONE command.",
+    "domain": "6",
+    "topic": "Cloning",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "All privileges on the database and its child objects are automatically copied to the clone",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4866
+      },
+      {
+        "answerText": "Child objects inherit privileges from the source, but the cloned database itself does not inherit source database privileges",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4867
+      },
+      {
+        "answerText": "No privileges are copied during cloning; all grants must be reapplied manually",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4868
+      },
+      {
+        "answerText": "Only OWNERSHIP privileges are copied; all other privileges must be granted explicitly",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4869
+      }
+    ]
+  },
+  {
+    "id": 997,
+    "questionText": "A data provider wants to share data with a consumer who does not have a Snowflake account. The provider creates a reader account for this purpose. Which of the following operations is NOT allowed in a reader account?",
+    "questionType": "single",
+    "explanation": "Reader accounts are intended primarily for querying data shared by the provider. They cannot upload new data, modify existing data, or use storage integrations to unload data. However, they can create materialized views on shared data, run queries, and use COPY INTO with explicit credentials (not storage integrations) to unload data to external locations.",
+    "domain": "6",
+    "topic": "Data Sharing",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "Creating materialized views on shared tables",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4870
+      },
+      {
+        "answerText": "Running SELECT queries on shared databases",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4871
+      },
+      {
+        "answerText": "Inserting new data into local tables within the reader account",
+        "isCorrect": true,
+        "sortOrder": 2,
+        "id": 4872
+      },
+      {
+        "answerText": "Unloading data to cloud storage using explicit credentials in COPY INTO",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4873
+      }
+    ]
+  },
+  {
+    "id": 998,
+    "questionText": "An organization has set up a failover group to replicate critical databases from their primary account in AWS US East to a secondary account in Azure West Europe. During a regional outage, they need to promote the secondary account. What happens to the replicated objects when failover is executed?",
+    "questionType": "single",
+    "explanation": "When failover is executed on a failover group, the secondary (replica) objects are promoted to serve as the primary read-write objects. The original primary objects become secondary (read-only). This allows the organization to continue operations with full read-write access to their databases during the outage. The failover group concept differs from a replication group in that it supports this promotion capability.",
+    "domain": "6",
+    "topic": "Replication",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "The secondary objects become read-write primary objects, and the original primary becomes secondary",
+        "isCorrect": true,
+        "sortOrder": 0,
+        "id": 4874
+      },
+      {
+        "answerText": "A new copy of the data is created in the secondary account, leaving the primary unchanged",
+        "isCorrect": false,
+        "sortOrder": 1,
+        "id": 4875
+      },
+      {
+        "answerText": "Both primary and secondary objects become read-write to handle increased load",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4876
+      },
+      {
+        "answerText": "The secondary objects remain read-only but queries are automatically redirected there",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4877
+      }
+    ]
+  },
+  {
+    "id": 999,
+    "questionText": "A company on Snowflake Standard Edition wants to configure Time Travel for their critical production tables. What is the maximum data retention period they can set?",
+    "questionType": "single",
+    "explanation": "In Snowflake Standard Edition, the maximum data retention period for Time Travel is 1 day (24 hours). Extended retention periods of up to 90 days for permanent tables are only available with Snowflake Enterprise Edition or higher. Standard Edition accounts can set retention to 0 or 1 day, but cannot exceed the 1-day maximum.",
+    "domain": "6",
+    "topic": "Time Travel",
+    "difficulty": "medium",
+    "answers": [
+      {
+        "answerText": "7 days",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4878
+      },
+      {
+        "answerText": "1 day",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4879
+      },
+      {
+        "answerText": "30 days",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4880
+      },
+      {
+        "answerText": "90 days",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4881
+      }
+    ]
+  },
+  {
+    "id": 1000,
+    "questionText": "When sharing data using Snowflake Secure Data Sharing, which type of database object must be used if the data provider wants to filter rows based on the consumer's account?",
+    "questionType": "single",
+    "explanation": "By default, only secure views (not standard views) can be added to shares because SECURE_OBJECTS_ONLY defaults to TRUE. Secure views allow providers to filter data based on conditions, including the consumer account using functions like CURRENT_ACCOUNT(). If a standard view is added to a default share, Snowflake returns an error. While Snowflake does offer a SECURE_OBJECTS_ONLY=FALSE option on shares to allow non-secure views, secure views remain the recommended and default approach. Secure views hide the view definition from consumers and prevent query optimization from exposing underlying data.",
+    "domain": "6",
+    "topic": "Data Sharing",
+    "difficulty": "hard",
+    "answers": [
+      {
+        "answerText": "Standard view with a WHERE clause filtering by account",
+        "isCorrect": false,
+        "sortOrder": 0,
+        "id": 4882
+      },
+      {
+        "answerText": "Secure view with row-level filtering logic",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "id": 4883
+      },
+      {
+        "answerText": "Materialized view with dynamic data masking",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "id": 4884
+      },
+      {
+        "answerText": "External table with row access policy",
+        "isCorrect": false,
+        "sortOrder": 3,
+        "id": 4885
+      }
+    ]
+  }
+]

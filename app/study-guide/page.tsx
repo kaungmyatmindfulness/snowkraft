@@ -8,21 +8,18 @@ export const dynamic = 'force-static'
  * Get the appropriate icon for a study guide based on its slug
  */
 function getStudyGuideIcon(slug: string): React.JSX.Element {
-  if (slug === 'complete') {
-    return <Icons.BookOpen size={24} className="text-sky-500" />
+  if (slug.startsWith('domain-')) {
+    return <Icons.Layers size={24} className="text-purple-500" />
   }
-  if (slug === 'tricky-patterns') {
-    return <Icons.AlertTriangle size={24} className="text-amber-500" />
-  }
-  // Domain guides
-  return <Icons.Layers size={24} className="text-purple-500" />
+  // Exam guide pages
+  return <Icons.FileText size={24} className="text-amber-500" />
 }
 
 /**
  * Get the domain badge key from a slug (e.g., 'domain-1' -> 'D1')
  */
 function getDomainKey(slug: string): string | null {
-  const match = /^domain-(\d)$/.exec(slug)
+  const match = /^domain-(\d+)/.exec(slug)
   const domainNumber = match?.[1]
   if (domainNumber !== undefined) {
     return `D${domainNumber}`

@@ -9,7 +9,7 @@ import { describe, it, expect, vi } from 'vitest'
 // Mock all question data files (questions are split across 7 files in production)
 // Put all mock data in questions-1.json, others return empty arrays
 // NOTE: vi.mock calls are hoisted, so we must inline the data
-vi.mock('@/data/questions-1.json', () => ({
+vi.mock('@/assets/questions/questions-1.json', () => ({
   default: [
     {
       id: 1,
@@ -201,12 +201,10 @@ vi.mock('@/data/questions-1.json', () => ({
     },
   ],
 }))
-vi.mock('@/data/questions-2.json', () => ({ default: [] }))
-vi.mock('@/data/questions-3.json', () => ({ default: [] }))
-vi.mock('@/data/questions-4.json', () => ({ default: [] }))
-vi.mock('@/data/questions-5.json', () => ({ default: [] }))
-vi.mock('@/data/questions-6.json', () => ({ default: [] }))
-vi.mock('@/data/questions-7.json', () => ({ default: [] }))
+vi.mock('@/assets/questions/questions-2.json', () => ({ default: [] }))
+vi.mock('@/assets/questions/questions-3.json', () => ({ default: [] }))
+vi.mock('@/assets/questions/questions-4.json', () => ({ default: [] }))
+vi.mock('@/assets/questions/questions-5.json', () => ({ default: [] }))
 
 // Import functions after mocking
 import {

@@ -39,6 +39,7 @@ import {
   Plus,
   GraduationCap,
   Trash2,
+  FileText,
 } from 'lucide-react'
 
 export const Icons = {
@@ -99,6 +100,7 @@ export const Icons = {
   Search,
   Loader2,
   Trash2,
+  FileText,
 }
 
 export type IconName = keyof typeof Icons

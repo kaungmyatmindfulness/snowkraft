@@ -4,31 +4,15 @@
  */
 
 import { z } from 'zod'
-import questions1 from '@/data/questions-1.json'
-import questions2 from '@/data/questions-2.json'
-import questions3 from '@/data/questions-3.json'
-import questions4 from '@/data/questions-4.json'
-import questions5 from '@/data/questions-5.json'
-import questions6 from '@/data/questions-6.json'
-import questions7 from '@/data/questions-7.json'
-import questions8 from '@/data/questions-8.json'
-import questions9 from '@/data/questions-9.json'
-import questions10 from '@/data/questions-10.json'
+import questions1 from '@/assets/questions/questions-1.json'
+import questions2 from '@/assets/questions/questions-2.json'
+import questions3 from '@/assets/questions/questions-3.json'
+import questions4 from '@/assets/questions/questions-4.json'
+import questions5 from '@/assets/questions/questions-5.json'
 import type { QuestionWithAnswers, Difficulty, QuestionType } from '@/types'
 
 // Merge all question files (each contains 100 questions)
-const questionsData = [
-  ...questions1,
-  ...questions2,
-  ...questions3,
-  ...questions4,
-  ...questions5,
-  ...questions6,
-  ...questions7,
-  ...questions8,
-  ...questions9,
-  ...questions10,
-]
+const questionsData = [...questions1, ...questions2, ...questions3, ...questions4, ...questions5]
 import { shuffleArray } from '@/lib/utils'
 
 // Zod schema for runtime validation of question data

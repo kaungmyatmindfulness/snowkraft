@@ -260,7 +260,7 @@ export function QuizConfigForm({ totalQuestions }: QuizConfigFormProps): React.J
               Filter by Question Set
               <span className="ml-1 font-normal text-gray-400 dark:text-gray-500">(optional)</span>
             </label>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-6 gap-2">
               <button
                 onClick={() => {
                   setSelectedPracticeSet(null)

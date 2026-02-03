@@ -5,6 +5,8 @@ import {
   getStudyGuideBySlug,
   getAllStudyGuideSlugs,
   getAllStudyGuides,
+  parseDomainFromSlug,
+  getPartsForDomain,
 } from '@/lib/data/study-guides'
 import { Card } from '@/components/ui/Card'
 import { Icons } from '@/components/ui'
@@ -35,8 +37,13 @@ export async function generateMetadata({ params }: StudyGuidePageProps): Promise
     }
   }
 
+  const title =
+    guide.partTitle !== undefined
+      ? `${guide.title} - ${guide.partTitle} | SnowPro Core Study Guide`
+      : `${guide.title} | SnowPro Core Study Guide`
+
   return {
-    title: `${guide.title} | SnowPro Core Study Guide`,
+    title,
     description: guide.description,
   }
 }
@@ -51,7 +58,15 @@ export default async function StudyGuidePage({
     notFound()
   }
 
-  const allGuides = getAllStudyGuides()
+  const domainNumber = parseDomainFromSlug(slug)
+
+  // Build sidebar items: domain parts when viewing a domain, top-level list otherwise
+  const sidebarItems: { slug: string; title: string }[] =
+    domainNumber !== null
+      ? getPartsForDomain(domainNumber).map((p) => ({ slug: p.slug, title: p.title }))
+      : getAllStudyGuides().map((g) => ({ slug: g.slug, title: g.title }))
+
+  const sidebarHeading = domainNumber !== null ? guide.title : 'Study Guides'
 
   return (
     <div className="flex gap-8">
@@ -61,22 +76,22 @@ export default async function StudyGuidePage({
           <Card variant="bordered" padding="sm">
             <div className="mb-2 p-2">
               <h2 className="text-sm font-semibold tracking-wider text-gray-900 uppercase dark:text-gray-100">
-                Study Guides
+                {sidebarHeading}
               </h2>
             </div>
             <ul className="space-y-1">
-              {allGuides.map((g) => (
-                <li key={g.slug}>
+              {sidebarItems.map((item) => (
+                <li key={item.slug}>
                   <Link
-                    href={`/study-guide/${g.slug}`}
+                    href={`/study-guide/${item.slug}`}
                     className={cn(
                       'block rounded-lg px-3 py-2 text-sm transition-colors',
-                      g.slug === slug
+                      item.slug === slug
                         ? 'bg-sky-100 font-medium text-sky-700 dark:bg-sky-900/30 dark:text-sky-300'
                         : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-700 dark:hover:text-gray-200'
                     )}
                   >
-                    {g.title}
+                    {item.title}
                   </Link>
                 </li>
               ))}
@@ -100,6 +115,11 @@ export default async function StudyGuidePage({
           <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
             {guide.title}
           </h1>
+          {guide.partTitle !== undefined && (
+            <h2 className="mb-2 text-xl font-semibold text-gray-700 dark:text-gray-300">
+              {guide.partTitle}
+            </h2>
+          )}
           <p className="text-lg text-gray-600 dark:text-gray-400">{guide.description}</p>
         </div>
 

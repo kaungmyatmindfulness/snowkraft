@@ -21,20 +21,15 @@ import {
 } from '@/lib/storage'
 import { isAnswerCorrect } from '@/lib/utils'
 
-export type ExamQuestionSet = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+export type ExamQuestionSet = 1 | 2 | 3 | 4 | 5
 
-// Exam question sets (10 sets of 100 questions each)
+// Exam question sets (5 sets of 100 questions each)
 export const EXAM_QUESTION_SETS: { set: ExamQuestionSet; label: string; range: string }[] = [
   { set: 1, label: 'Set 1', range: '1-100' },
   { set: 2, label: 'Set 2', range: '101-200' },
   { set: 3, label: 'Set 3', range: '201-300' },
   { set: 4, label: 'Set 4', range: '301-400' },
   { set: 5, label: 'Set 5', range: '401-500' },
-  { set: 6, label: 'Set 6', range: '501-600' },
-  { set: 7, label: 'Set 7', range: '601-700' },
-  { set: 8, label: 'Set 8', range: '701-800' },
-  { set: 9, label: 'Set 9', range: '801-900' },
-  { set: 10, label: 'Set 10', range: '901-1000' },
 ]
 
 export interface StartQuizParams {
